@@ -1,6 +1,7 @@
+import fnmatch
+
 from libc.stdlib cimport malloc, free
 from cpython.version cimport PY_MAJOR_VERSION
-cimport graphite_functions
 cimport cnode
 
 cdef str ENCODING='utf-8'
@@ -31,6 +32,42 @@ cdef object PyNode_Init(cnode.Node *node):
     cdef Node _node = Node()
     _node._node = node
     return _node
+
+# Graphite-API functions ported to cython from graphite-api project
+# http://graphite-api.readthedocs.org/
+def _deduplicate(list entries):
+    cdef set yielded = set()
+    for entry in entries:
+        if entry not in yielded:
+            yielded.add(entry)
+            yield entry
+
+# Graphite-API functions ported to cython from graphite-api project
+# http://graphite-api.readthedocs.org/
+cdef match_entries(node, pattern):
+    """A drop-in replacement for fnmatch.filter that supports pattern
+    variants (ie. {foo,bar}baz = foobaz or barbaz)."""
+    cdef list ch_nodes = [_node for _node in node.children]
+    cdef list node_names = [_node.name for _node in ch_nodes]
+    cdef list variations
+    cdef list variants
+    cdef list matching
+    v1, v2 = pattern.find('{'), pattern.find('}')
+
+    if v1 > -1 and v2 > v1:
+        variations = pattern[v1+1:v2].split(',')
+        variants = [pattern[:v1] + v + pattern[v2+1:] for v in variations]
+        matching = []
+
+        for variant in variants:
+            matching.extend(fnmatch.filter(node_names, variant))
+
+        # remove dupes without changing order
+        matching = list(_deduplicate(matching))
+        return [_node for _node in ch_nodes if _node.name in matching]
+    matching = fnmatch.filter(node_names, pattern)
+    matching.sort()
+    return [_node for _node in ch_nodes if _node.name in matching]
 
 
 cdef class Node:
@@ -138,7 +175,7 @@ cdef class Node:
 
     cdef list _get_matched_children(self, sub_query, Node node):
         if self.is_pattern(sub_query):
-            return graphite_functions.match_entries(node, sub_query)
+            return match_entries(node, sub_query)
         cdef Node _node
         return [_node for _node in node.children
                 if _node.name == sub_query]

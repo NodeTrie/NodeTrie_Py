@@ -26,10 +26,6 @@ extensions = [Extension("nodetrie.nodetrie",
                          include_dirs=["nodetrie_c/src"],
                          extra_compile_args=["-std=c99", "-O3"],
                          ),
-              Extension("nodetrie.graphite_functions",
-                        ["nodetrie/graphite_functions.%s" % (ext,)],
-                        extra_compile_args=["-O3"],
-                        )
              ]
 
 if USING_CYTHON:
