@@ -1,0 +1,1 @@
+../nodetrie_c/extensions/python/cnode.pxd
