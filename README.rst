@@ -17,6 +17,30 @@ Installation
 
   pip install nodetrie
 
+Motivation, design goals
+==========================
+
+NodeTrie is a Python extension to a native C library written for this purpose.
+
+It came about from a lack of viable alternatives for Python. While other trie library implementations exist, they suffer from severe limitations such as
+
+ * Read only structures, no insertions
+ * High memory use for large trees
+ * Lack of searching, particularly file mask or wild card style searching
+ * Slow inserts
+
+Existing implementations on PyPi fall into these broad categories, including Marissa-Trie (read only) and datrie (slow inserts, very high memory use).
+
+NodeTrie's C library is designed to minimize memory use as much as possible and still allow arbitrary length trees that can be searched.
+
+Each node only has a name associated with it which is readonly on the `Node` object.
+
+Node names are always returned as unicode by `Node.name` in Python 2/3.
+
+On insertion, any python string type may be used whether a type of unicode or str, converted to byte strings on insertion if needed. The default encoding is `utf-8`.
+
+Deletions are not implemented.
+
 Example Usage
 ==============
 
@@ -26,6 +50,7 @@ Example Usage
 
   # This is the head of the trie, keep a reference to it
   node = Node()
+
   # Insert a linked tree so that a->b->c->d where -> means 'has child node'
   node.insert_split_path(['a', 'b', 'c', 'd'])
   node.children[0].name == 'a'
