@@ -1,2 +1,2 @@
 include versioneer.py
-include node_trie/_version.py
+include nodetrie/_version.py
