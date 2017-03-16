@@ -1,3 +1,21 @@
+# cython: boundscheck=False, wraparound=False, optimize.use_switch=True
+
+# This file is part of NodeTrie.
+# Copyright (C) 2017 Panos Kittenis
+
+# This library is free software; you can redistribute it and/or
+# modify it under the terms of the GNU Lesser General Public
+# License as published by the Free Software Foundation, version 2.1.
+
+# This library is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+# Lesser General Public License for more details.
+
+# You should have received a copy of the GNU Lesser General Public
+# License along with this library; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+
 import fnmatch
 
 from libc.stdlib cimport malloc, free
@@ -16,7 +34,8 @@ cdef bytes _encode_bytes(_str):
     return bytes(_str)
 
 cdef unsigned char ** to_cstring_array(list list_str):
-    cdef unsigned char **ret = <unsigned char **>malloc((len(list_str)+1) * sizeof(unsigned char *))
+    cdef unsigned char **ret = <unsigned char **>malloc(
+        (len(list_str)+1) * sizeof(unsigned char *))
     if not ret:
         raise MemoryError()
     cdef bytes _str
@@ -46,7 +65,9 @@ def _deduplicate(list entries):
 # http://graphite-api.readthedocs.org/
 cdef match_entries(node, pattern):
     """A drop-in replacement for fnmatch.filter that supports pattern
-    variants (ie. {foo,bar}baz = foobaz or barbaz)."""
+    variants (ie. {foo,bar}baz = foobaz or barbaz).
+
+    Ported to Cython and made to use Node object instead of path"""
     cdef list ch_nodes = [_node for _node in node.children]
     cdef list node_names = [_node.name for _node in ch_nodes]
     cdef list variations
@@ -66,7 +87,6 @@ cdef match_entries(node, pattern):
         matching = list(_deduplicate(matching))
         return [_node for _node in ch_nodes if _node.name in matching]
     matching = fnmatch.filter(node_names, pattern)
-    matching.sort()
     return [_node for _node in ch_nodes if _node.name in matching]
 
 
@@ -113,22 +133,6 @@ cdef class Node:
             if self._node is not NULL and self._node.name is not NULL:
                 return self._node.name.decode(ENCODING)
 
-    # cpdef list to_array(self):
-    #     """Return list of (name, children_list) items for this node's children"""
-    #     cdef Node node
-    #     if self._node.children_i == 0:
-    #         return
-    #     return [(PyString_AsString(_encode_bytes(node.name)),
-    #              node.to_array(),) for node in self.children]
-
-    # @staticmethod
-    # def from_array(list dumped_ar):
-    #     for child_name, child_array in dumped_ar:
-    #         # print "Inserting %s to parent" % (child_name,)
-    #         child = Node.from_array(child_array)
-    #         # parent = child
-    #     return PyNode_Init(new_root)
-
     def is_leaf(self):
         """Check if node is a leaf
 
@@ -136,7 +140,7 @@ cdef class Node:
         """
         return self._is_leaf(self._node)
 
-    cdef bint _is_leaf(self, cnode.Node *node):
+    cdef bint _is_leaf(self, cnode.Node *node) nogil:
         return cnode.is_leaf(node)
 
     def insert(self, path, str separator='.'):
