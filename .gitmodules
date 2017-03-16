@@ -1,3 +1,3 @@
 [submodule "nodetrie_c"]
 	path = nodetrie_c
-	url = git@github.com:NodeTrie/NodeTrie_C.git
+	url = https://github.com/NodeTrie/NodeTrie_C.git
