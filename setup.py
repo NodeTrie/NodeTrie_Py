@@ -29,8 +29,11 @@ extensions = [Extension("nodetrie.nodetrie",
              ]
 
 if USING_CYTHON:
-    extensions = cythonize(extensions)
-        
+    extensions = cythonize(
+        extensions,
+        compiler_directives={'embedsignature': True,}
+        )
+
 cmdclass = versioneer.get_cmdclass()
 
 class Distribution(_Distribution):

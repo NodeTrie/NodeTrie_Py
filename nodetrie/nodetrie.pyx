@@ -170,11 +170,11 @@ cdef class Node:
         cnode.insert_paths(self._node, paths)
         free(paths)
 
-    def query(self, query):
+    def query(self, query, separator='.'):
         """Return nodes matching Graphite glob pattern query"""
-        cdef list nodes = sorted(self.search(self, query.split('.'), []))
+        cdef list nodes = sorted(self.search(self, query.split(separator), []))
         cdef Node node
-        return (('.'.join(path), node,)
+        return ((separator.join(path), node,)
                 for path, node in nodes)
 
     cdef list _get_matched_children(self, sub_query, Node node):
