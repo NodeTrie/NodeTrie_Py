@@ -1,5 +1,4 @@
 from libc.stdlib cimport malloc, free
-from cpython.string cimport PyString_AsString
 from cpython.version cimport PY_MAJOR_VERSION
 cimport graphite_functions
 cimport cnode
@@ -16,17 +15,16 @@ cdef bytes _encode_bytes(_str):
     return bytes(_str)
 
 cdef unsigned char ** to_cstring_array(list list_str):
-    cdef unsigned int i
     cdef unsigned char **ret = <unsigned char **>malloc((len(list_str)+1) * sizeof(unsigned char *))
     if not ret:
         raise MemoryError()
     cdef bytes _str
+    cdef Py_ssize_t i
     for i in range(len(list_str)):
         list_str[i] = _encode_bytes(list_str[i])
-        ret[i] = <unsigned char *>PyString_AsString(list_str[i])
+        ret[i] = <unsigned char *>list_str[i]
     ret[i+1] = NULL
     return ret
-
 
 cdef object PyNode_Init(cnode.Node *node):
     """Python Node object factory class for cnode.Node*"""
@@ -123,13 +121,13 @@ cdef class Node:
             return
         cdef unsigned char **c_paths = to_cstring_array(paths)
         self._insert_split_path(c_paths)
-        free(c_paths)
 
     cdef void _insert_split_path(self, unsigned char **paths) nogil:
         if self._node == NULL:
             self._node = cnode.init_node()
         _node = self._node
         cnode.insert_paths(self._node, paths)
+        free(paths)
 
     def query(self, query):
         """Return nodes matching Graphite glob pattern query"""

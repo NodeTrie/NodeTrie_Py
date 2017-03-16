@@ -450,7 +450,6 @@ static CYTHON_INLINE float __PYX_NAN() {
 #include "node.h"
 #include <string.h>
 #include <stdlib.h>
-#include <stdio.h>
 #ifdef _OPENMP
 #include <omp.h>
 #endif /* _OPENMP */
@@ -647,7 +646,6 @@ static const char *__pyx_filename;
 
 static const char *__pyx_f[] = {
   "nodetrie/nodetrie.pyx",
-  "type.pxd",
 };
 
 /*--- Type declarations ---*/
@@ -670,8 +668,8 @@ struct __pyx_obj_8nodetrie_8nodetrie_Node {
 };
 
 
-/* "nodetrie/nodetrie.pyx":134
- *         cnode.insert_paths(self._node, paths)
+/* "nodetrie/nodetrie.pyx":132
+ *         free(paths)
  * 
  *     def query(self, query):             # <<<<<<<<<<<<<<
  *         """Return nodes matching Graphite glob pattern query"""
@@ -683,7 +681,7 @@ struct __pyx_obj_8nodetrie_8nodetrie___pyx_scope_struct__query {
 };
 
 
-/* "nodetrie/nodetrie.pyx":138
+/* "nodetrie/nodetrie.pyx":136
  *         cdef list nodes = sorted(self.search(self, query.split('.'), []))
  *         cdef Node node
  *         return (('.'.join(path), node,)             # <<<<<<<<<<<<<<
@@ -700,7 +698,7 @@ struct __pyx_obj_8nodetrie_8nodetrie___pyx_scope_struct_1_genexpr {
 };
 
 
-/* "nodetrie/nodetrie.pyx":148
+/* "nodetrie/nodetrie.pyx":146
  *                 if _node.name == sub_query]
  * 
  *     def search(self, Node node, list split_query, list split_path):             # <<<<<<<<<<<<<<
@@ -728,7 +726,7 @@ struct __pyx_obj_8nodetrie_8nodetrie___pyx_scope_struct_2_search {
 
 
 
-/* "nodetrie/nodetrie.pyx":38
+/* "nodetrie/nodetrie.pyx":36
  * 
  * 
  * cdef class Node:             # <<<<<<<<<<<<<<
@@ -1048,9 +1046,6 @@ static void __Pyx_AddTraceback(const char *funcname, int c_line,
                                int py_line, const char *filename);
 
 /* CIntToPy.proto */
-static CYTHON_INLINE PyObject* __Pyx_PyInt_From_unsigned_int(unsigned int value);
-
-/* CIntToPy.proto */
 static CYTHON_INLINE PyObject* __Pyx_PyInt_From_long(long value);
 
 /* CIntFromPy.proto */
@@ -1140,9 +1135,6 @@ static int __Pyx_ExportFunction(const char *name, void (*f)(void), const char *s
 /* ModuleImport.proto */
 static PyObject *__Pyx_ImportModule(const char *name);
 
-/* TypeImport.proto */
-static PyTypeObject *__Pyx_ImportType(const char *module_name, const char *class_name, size_t size, int strict);
-
 /* FunctionImport.proto */
 static int __Pyx_ImportFunction(PyObject *module, const char *funcname, void (**f)(void), const char *sig);
 
@@ -1162,19 +1154,6 @@ static int __pyx_f_8nodetrie_8nodetrie_4Node__is_pattern(CYTHON_UNUSED struct __
 /* Module declarations from 'libc.string' */
 
 /* Module declarations from 'libc.stdlib' */
-
-/* Module declarations from 'libc.stdio' */
-
-/* Module declarations from '__builtin__' */
-
-/* Module declarations from 'cpython.type' */
-static PyTypeObject *__pyx_ptype_7cpython_4type_type = 0;
-
-/* Module declarations from 'cpython' */
-
-/* Module declarations from 'cpython.object' */
-
-/* Module declarations from 'cpython.string' */
 
 /* Module declarations from 'cpython.version' */
 
@@ -1272,7 +1251,7 @@ static PyObject *__pyx_tp_new_8nodetrie_8nodetrie___pyx_scope_struct_1_genexpr(P
 static PyObject *__pyx_tp_new_8nodetrie_8nodetrie___pyx_scope_struct_2_search(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
 static PyObject *__pyx_tuple__2;
 
-/* "nodetrie/nodetrie.pyx":9
+/* "nodetrie/nodetrie.pyx":8
  * cdef str ENCODING='utf-8'
  * 
  * cdef bytes _encode_bytes(_str):             # <<<<<<<<<<<<<<
@@ -1292,7 +1271,7 @@ static PyObject *__pyx_f_8nodetrie_8nodetrie__encode_bytes(PyObject *__pyx_v__st
   PyObject *__pyx_t_7 = NULL;
   __Pyx_RefNannySetupContext("_encode_bytes", 0);
 
-  /* "nodetrie/nodetrie.pyx":10
+  /* "nodetrie/nodetrie.pyx":9
  * 
  * cdef bytes _encode_bytes(_str):
  *     if isinstance(_str, bytes):             # <<<<<<<<<<<<<<
@@ -1303,7 +1282,7 @@ static PyObject *__pyx_f_8nodetrie_8nodetrie__encode_bytes(PyObject *__pyx_v__st
   __pyx_t_2 = (__pyx_t_1 != 0);
   if (__pyx_t_2) {
 
-    /* "nodetrie/nodetrie.pyx":11
+    /* "nodetrie/nodetrie.pyx":10
  * cdef bytes _encode_bytes(_str):
  *     if isinstance(_str, bytes):
  *         return _str             # <<<<<<<<<<<<<<
@@ -1311,12 +1290,12 @@ static PyObject *__pyx_f_8nodetrie_8nodetrie__encode_bytes(PyObject *__pyx_v__st
  *         return _str.encode(ENCODING)
  */
     __Pyx_XDECREF(__pyx_r);
-    if (!(likely(PyBytes_CheckExact(__pyx_v__str))||((__pyx_v__str) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "bytes", Py_TYPE(__pyx_v__str)->tp_name), 0))) __PYX_ERR(0, 11, __pyx_L1_error)
+    if (!(likely(PyBytes_CheckExact(__pyx_v__str))||((__pyx_v__str) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "bytes", Py_TYPE(__pyx_v__str)->tp_name), 0))) __PYX_ERR(0, 10, __pyx_L1_error)
     __Pyx_INCREF(__pyx_v__str);
     __pyx_r = ((PyObject*)__pyx_v__str);
     goto __pyx_L0;
 
-    /* "nodetrie/nodetrie.pyx":10
+    /* "nodetrie/nodetrie.pyx":9
  * 
  * cdef bytes _encode_bytes(_str):
  *     if isinstance(_str, bytes):             # <<<<<<<<<<<<<<
@@ -1325,7 +1304,7 @@ static PyObject *__pyx_f_8nodetrie_8nodetrie__encode_bytes(PyObject *__pyx_v__st
  */
   }
 
-  /* "nodetrie/nodetrie.pyx":12
+  /* "nodetrie/nodetrie.pyx":11
  *     if isinstance(_str, bytes):
  *         return _str
  *     elif PY_MAJOR_VERSION < 3 and isinstance(_str, unicode):             # <<<<<<<<<<<<<<
@@ -1344,7 +1323,7 @@ static PyObject *__pyx_f_8nodetrie_8nodetrie__encode_bytes(PyObject *__pyx_v__st
   __pyx_L4_bool_binop_done:;
   if (__pyx_t_2) {
 
-    /* "nodetrie/nodetrie.pyx":13
+    /* "nodetrie/nodetrie.pyx":12
  *         return _str
  *     elif PY_MAJOR_VERSION < 3 and isinstance(_str, unicode):
  *         return _str.encode(ENCODING)             # <<<<<<<<<<<<<<
@@ -1352,7 +1331,7 @@ static PyObject *__pyx_f_8nodetrie_8nodetrie__encode_bytes(PyObject *__pyx_v__st
  *         return bytes(_str, ENCODING)
  */
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v__str, __pyx_n_s_encode); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 13, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v__str, __pyx_n_s_encode); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 12, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __pyx_t_6 = NULL;
     if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_5))) {
@@ -1365,13 +1344,13 @@ static PyObject *__pyx_f_8nodetrie_8nodetrie__encode_bytes(PyObject *__pyx_v__st
       }
     }
     if (!__pyx_t_6) {
-      __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_v_8nodetrie_8nodetrie_ENCODING); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 13, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_v_8nodetrie_8nodetrie_ENCODING); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 12, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
     } else {
       #if CYTHON_FAST_PYCALL
       if (PyFunction_Check(__pyx_t_5)) {
         PyObject *__pyx_temp[2] = {__pyx_t_6, __pyx_v_8nodetrie_8nodetrie_ENCODING};
-        __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_5, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 13, __pyx_L1_error)
+        __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_5, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 12, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
         __Pyx_GOTREF(__pyx_t_4);
       } else
@@ -1379,30 +1358,30 @@ static PyObject *__pyx_f_8nodetrie_8nodetrie__encode_bytes(PyObject *__pyx_v__st
       #if CYTHON_FAST_PYCCALL
       if (__Pyx_PyFastCFunction_Check(__pyx_t_5)) {
         PyObject *__pyx_temp[2] = {__pyx_t_6, __pyx_v_8nodetrie_8nodetrie_ENCODING};
-        __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_5, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 13, __pyx_L1_error)
+        __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_5, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 12, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
         __Pyx_GOTREF(__pyx_t_4);
       } else
       #endif
       {
-        __pyx_t_7 = PyTuple_New(1+1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 13, __pyx_L1_error)
+        __pyx_t_7 = PyTuple_New(1+1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 12, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_7);
         __Pyx_GIVEREF(__pyx_t_6); PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_6); __pyx_t_6 = NULL;
         __Pyx_INCREF(__pyx_v_8nodetrie_8nodetrie_ENCODING);
         __Pyx_GIVEREF(__pyx_v_8nodetrie_8nodetrie_ENCODING);
         PyTuple_SET_ITEM(__pyx_t_7, 0+1, __pyx_v_8nodetrie_8nodetrie_ENCODING);
-        __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_7, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 13, __pyx_L1_error)
+        __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_7, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 12, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
         __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
       }
     }
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    if (!(likely(PyBytes_CheckExact(__pyx_t_4))||((__pyx_t_4) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "bytes", Py_TYPE(__pyx_t_4)->tp_name), 0))) __PYX_ERR(0, 13, __pyx_L1_error)
+    if (!(likely(PyBytes_CheckExact(__pyx_t_4))||((__pyx_t_4) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "bytes", Py_TYPE(__pyx_t_4)->tp_name), 0))) __PYX_ERR(0, 12, __pyx_L1_error)
     __pyx_r = ((PyObject*)__pyx_t_4);
     __pyx_t_4 = 0;
     goto __pyx_L0;
 
-    /* "nodetrie/nodetrie.pyx":12
+    /* "nodetrie/nodetrie.pyx":11
  *     if isinstance(_str, bytes):
  *         return _str
  *     elif PY_MAJOR_VERSION < 3 and isinstance(_str, unicode):             # <<<<<<<<<<<<<<
@@ -1411,7 +1390,7 @@ static PyObject *__pyx_f_8nodetrie_8nodetrie__encode_bytes(PyObject *__pyx_v__st
  */
   }
 
-  /* "nodetrie/nodetrie.pyx":14
+  /* "nodetrie/nodetrie.pyx":13
  *     elif PY_MAJOR_VERSION < 3 and isinstance(_str, unicode):
  *         return _str.encode(ENCODING)
  *     elif PY_MAJOR_VERSION >= 3 and isinstance(_str, str):             # <<<<<<<<<<<<<<
@@ -1430,7 +1409,7 @@ static PyObject *__pyx_f_8nodetrie_8nodetrie__encode_bytes(PyObject *__pyx_v__st
   __pyx_L6_bool_binop_done:;
   if (__pyx_t_2) {
 
-    /* "nodetrie/nodetrie.pyx":15
+    /* "nodetrie/nodetrie.pyx":14
  *         return _str.encode(ENCODING)
  *     elif PY_MAJOR_VERSION >= 3 and isinstance(_str, str):
  *         return bytes(_str, ENCODING)             # <<<<<<<<<<<<<<
@@ -1438,7 +1417,7 @@ static PyObject *__pyx_f_8nodetrie_8nodetrie__encode_bytes(PyObject *__pyx_v__st
  * 
  */
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 15, __pyx_L1_error)
+    __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 14, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_INCREF(__pyx_v__str);
     __Pyx_GIVEREF(__pyx_v__str);
@@ -1446,14 +1425,14 @@ static PyObject *__pyx_f_8nodetrie_8nodetrie__encode_bytes(PyObject *__pyx_v__st
     __Pyx_INCREF(__pyx_v_8nodetrie_8nodetrie_ENCODING);
     __Pyx_GIVEREF(__pyx_v_8nodetrie_8nodetrie_ENCODING);
     PyTuple_SET_ITEM(__pyx_t_4, 1, __pyx_v_8nodetrie_8nodetrie_ENCODING);
-    __pyx_t_5 = __Pyx_PyObject_Call(((PyObject *)(&PyBytes_Type)), __pyx_t_4, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 15, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_Call(((PyObject *)(&PyBytes_Type)), __pyx_t_4, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 14, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __pyx_r = ((PyObject*)__pyx_t_5);
     __pyx_t_5 = 0;
     goto __pyx_L0;
 
-    /* "nodetrie/nodetrie.pyx":14
+    /* "nodetrie/nodetrie.pyx":13
  *     elif PY_MAJOR_VERSION < 3 and isinstance(_str, unicode):
  *         return _str.encode(ENCODING)
  *     elif PY_MAJOR_VERSION >= 3 and isinstance(_str, str):             # <<<<<<<<<<<<<<
@@ -1462,7 +1441,7 @@ static PyObject *__pyx_f_8nodetrie_8nodetrie__encode_bytes(PyObject *__pyx_v__st
  */
   }
 
-  /* "nodetrie/nodetrie.pyx":16
+  /* "nodetrie/nodetrie.pyx":15
  *     elif PY_MAJOR_VERSION >= 3 and isinstance(_str, str):
  *         return bytes(_str, ENCODING)
  *     return bytes(_str)             # <<<<<<<<<<<<<<
@@ -1470,19 +1449,19 @@ static PyObject *__pyx_f_8nodetrie_8nodetrie__encode_bytes(PyObject *__pyx_v__st
  * cdef unsigned char ** to_cstring_array(list list_str):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_5 = PyTuple_New(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 16, __pyx_L1_error)
+  __pyx_t_5 = PyTuple_New(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 15, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_INCREF(__pyx_v__str);
   __Pyx_GIVEREF(__pyx_v__str);
   PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_v__str);
-  __pyx_t_4 = __Pyx_PyObject_Call(((PyObject *)(&PyBytes_Type)), __pyx_t_5, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 16, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_Call(((PyObject *)(&PyBytes_Type)), __pyx_t_5, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 15, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __pyx_r = ((PyObject*)__pyx_t_4);
   __pyx_t_4 = 0;
   goto __pyx_L0;
 
-  /* "nodetrie/nodetrie.pyx":9
+  /* "nodetrie/nodetrie.pyx":8
  * cdef str ENCODING='utf-8'
  * 
  * cdef bytes _encode_bytes(_str):             # <<<<<<<<<<<<<<
@@ -1504,43 +1483,43 @@ static PyObject *__pyx_f_8nodetrie_8nodetrie__encode_bytes(PyObject *__pyx_v__st
   return __pyx_r;
 }
 
-/* "nodetrie/nodetrie.pyx":18
+/* "nodetrie/nodetrie.pyx":17
  *     return bytes(_str)
  * 
  * cdef unsigned char ** to_cstring_array(list list_str):             # <<<<<<<<<<<<<<
- *     cdef unsigned int i
  *     cdef unsigned char **ret = <unsigned char **>malloc((len(list_str)+1) * sizeof(unsigned char *))
+ *     if not ret:
  */
 
 static unsigned char **__pyx_f_8nodetrie_8nodetrie_to_cstring_array(PyObject *__pyx_v_list_str) {
-  unsigned int __pyx_v_i;
   unsigned char **__pyx_v_ret;
+  Py_ssize_t __pyx_v_i;
   unsigned char **__pyx_r;
   __Pyx_RefNannyDeclarations
   Py_ssize_t __pyx_t_1;
   int __pyx_t_2;
-  unsigned int __pyx_t_3;
+  Py_ssize_t __pyx_t_3;
   PyObject *__pyx_t_4 = NULL;
   PyObject *__pyx_t_5 = NULL;
-  char *__pyx_t_6;
+  unsigned char *__pyx_t_6;
   __Pyx_RefNannySetupContext("to_cstring_array", 0);
 
-  /* "nodetrie/nodetrie.pyx":20
+  /* "nodetrie/nodetrie.pyx":18
+ * 
  * cdef unsigned char ** to_cstring_array(list list_str):
- *     cdef unsigned int i
  *     cdef unsigned char **ret = <unsigned char **>malloc((len(list_str)+1) * sizeof(unsigned char *))             # <<<<<<<<<<<<<<
  *     if not ret:
  *         raise MemoryError()
  */
   if (unlikely(__pyx_v_list_str == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "object of type 'NoneType' has no len()");
-    __PYX_ERR(0, 20, __pyx_L1_error)
+    __PYX_ERR(0, 18, __pyx_L1_error)
   }
-  __pyx_t_1 = PyList_GET_SIZE(__pyx_v_list_str); if (unlikely(__pyx_t_1 == -1)) __PYX_ERR(0, 20, __pyx_L1_error)
+  __pyx_t_1 = PyList_GET_SIZE(__pyx_v_list_str); if (unlikely(__pyx_t_1 == -1)) __PYX_ERR(0, 18, __pyx_L1_error)
   __pyx_v_ret = ((unsigned char **)malloc(((__pyx_t_1 + 1) * (sizeof(unsigned char *)))));
 
-  /* "nodetrie/nodetrie.pyx":21
- *     cdef unsigned int i
+  /* "nodetrie/nodetrie.pyx":19
+ * cdef unsigned char ** to_cstring_array(list list_str):
  *     cdef unsigned char **ret = <unsigned char **>malloc((len(list_str)+1) * sizeof(unsigned char *))
  *     if not ret:             # <<<<<<<<<<<<<<
  *         raise MemoryError()
@@ -1549,17 +1528,17 @@ static unsigned char **__pyx_f_8nodetrie_8nodetrie_to_cstring_array(PyObject *__
   __pyx_t_2 = ((!(__pyx_v_ret != 0)) != 0);
   if (__pyx_t_2) {
 
-    /* "nodetrie/nodetrie.pyx":22
+    /* "nodetrie/nodetrie.pyx":20
  *     cdef unsigned char **ret = <unsigned char **>malloc((len(list_str)+1) * sizeof(unsigned char *))
  *     if not ret:
  *         raise MemoryError()             # <<<<<<<<<<<<<<
  *     cdef bytes _str
- *     for i in range(len(list_str)):
+ *     cdef Py_ssize_t i
  */
-    PyErr_NoMemory(); __PYX_ERR(0, 22, __pyx_L1_error)
+    PyErr_NoMemory(); __PYX_ERR(0, 20, __pyx_L1_error)
 
-    /* "nodetrie/nodetrie.pyx":21
- *     cdef unsigned int i
+    /* "nodetrie/nodetrie.pyx":19
+ * cdef unsigned char ** to_cstring_array(list list_str):
  *     cdef unsigned char **ret = <unsigned char **>malloc((len(list_str)+1) * sizeof(unsigned char *))
  *     if not ret:             # <<<<<<<<<<<<<<
  *         raise MemoryError()
@@ -1567,87 +1546,87 @@ static unsigned char **__pyx_f_8nodetrie_8nodetrie_to_cstring_array(PyObject *__
  */
   }
 
-  /* "nodetrie/nodetrie.pyx":24
- *         raise MemoryError()
+  /* "nodetrie/nodetrie.pyx":23
  *     cdef bytes _str
+ *     cdef Py_ssize_t i
  *     for i in range(len(list_str)):             # <<<<<<<<<<<<<<
  *         list_str[i] = _encode_bytes(list_str[i])
- *         ret[i] = <unsigned char *>PyString_AsString(list_str[i])
+ *         ret[i] = <unsigned char *>list_str[i]
  */
   if (unlikely(__pyx_v_list_str == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "object of type 'NoneType' has no len()");
-    __PYX_ERR(0, 24, __pyx_L1_error)
+    __PYX_ERR(0, 23, __pyx_L1_error)
   }
-  __pyx_t_1 = PyList_GET_SIZE(__pyx_v_list_str); if (unlikely(__pyx_t_1 == -1)) __PYX_ERR(0, 24, __pyx_L1_error)
+  __pyx_t_1 = PyList_GET_SIZE(__pyx_v_list_str); if (unlikely(__pyx_t_1 == -1)) __PYX_ERR(0, 23, __pyx_L1_error)
   for (__pyx_t_3 = 0; __pyx_t_3 < __pyx_t_1; __pyx_t_3+=1) {
     __pyx_v_i = __pyx_t_3;
 
-    /* "nodetrie/nodetrie.pyx":25
- *     cdef bytes _str
+    /* "nodetrie/nodetrie.pyx":24
+ *     cdef Py_ssize_t i
  *     for i in range(len(list_str)):
  *         list_str[i] = _encode_bytes(list_str[i])             # <<<<<<<<<<<<<<
- *         ret[i] = <unsigned char *>PyString_AsString(list_str[i])
+ *         ret[i] = <unsigned char *>list_str[i]
  *     ret[i+1] = NULL
  */
     if (unlikely(__pyx_v_list_str == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 25, __pyx_L1_error)
+      __PYX_ERR(0, 24, __pyx_L1_error)
     }
-    __pyx_t_4 = __Pyx_GetItemInt_List(__pyx_v_list_str, __pyx_v_i, unsigned int, 0, __Pyx_PyInt_From_unsigned_int, 1, 0, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 25, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_GetItemInt_List(__pyx_v_list_str, __pyx_v_i, Py_ssize_t, 1, PyInt_FromSsize_t, 1, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 24, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_5 = __pyx_f_8nodetrie_8nodetrie__encode_bytes(__pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 25, __pyx_L1_error)
+    __pyx_t_5 = __pyx_f_8nodetrie_8nodetrie__encode_bytes(__pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 24, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     if (unlikely(__pyx_v_list_str == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 25, __pyx_L1_error)
+      __PYX_ERR(0, 24, __pyx_L1_error)
     }
-    if (unlikely(__Pyx_SetItemInt(__pyx_v_list_str, __pyx_v_i, __pyx_t_5, unsigned int, 0, __Pyx_PyInt_From_unsigned_int, 1, 0, 1) < 0)) __PYX_ERR(0, 25, __pyx_L1_error)
+    if (unlikely(__Pyx_SetItemInt(__pyx_v_list_str, __pyx_v_i, __pyx_t_5, Py_ssize_t, 1, PyInt_FromSsize_t, 1, 1, 1) < 0)) __PYX_ERR(0, 24, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-    /* "nodetrie/nodetrie.pyx":26
+    /* "nodetrie/nodetrie.pyx":25
  *     for i in range(len(list_str)):
  *         list_str[i] = _encode_bytes(list_str[i])
- *         ret[i] = <unsigned char *>PyString_AsString(list_str[i])             # <<<<<<<<<<<<<<
+ *         ret[i] = <unsigned char *>list_str[i]             # <<<<<<<<<<<<<<
  *     ret[i+1] = NULL
  *     return ret
  */
     if (unlikely(__pyx_v_list_str == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 26, __pyx_L1_error)
+      __PYX_ERR(0, 25, __pyx_L1_error)
     }
-    __pyx_t_5 = __Pyx_GetItemInt_List(__pyx_v_list_str, __pyx_v_i, unsigned int, 0, __Pyx_PyInt_From_unsigned_int, 1, 0, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 26, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_GetItemInt_List(__pyx_v_list_str, __pyx_v_i, Py_ssize_t, 1, PyInt_FromSsize_t, 1, 1, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 25, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_6 = PyString_AsString(__pyx_t_5); if (unlikely(__pyx_t_6 == NULL)) __PYX_ERR(0, 26, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_AsUString(__pyx_t_5); if (unlikely((!__pyx_t_6) && PyErr_Occurred())) __PYX_ERR(0, 25, __pyx_L1_error)
     (__pyx_v_ret[__pyx_v_i]) = ((unsigned char *)__pyx_t_6);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   }
 
-  /* "nodetrie/nodetrie.pyx":27
+  /* "nodetrie/nodetrie.pyx":26
  *         list_str[i] = _encode_bytes(list_str[i])
- *         ret[i] = <unsigned char *>PyString_AsString(list_str[i])
+ *         ret[i] = <unsigned char *>list_str[i]
  *     ret[i+1] = NULL             # <<<<<<<<<<<<<<
  *     return ret
  * 
  */
   (__pyx_v_ret[(__pyx_v_i + 1)]) = NULL;
 
-  /* "nodetrie/nodetrie.pyx":28
- *         ret[i] = <unsigned char *>PyString_AsString(list_str[i])
+  /* "nodetrie/nodetrie.pyx":27
+ *         ret[i] = <unsigned char *>list_str[i]
  *     ret[i+1] = NULL
  *     return ret             # <<<<<<<<<<<<<<
  * 
- * 
+ * cdef object PyNode_Init(cnode.Node *node):
  */
   __pyx_r = __pyx_v_ret;
   goto __pyx_L0;
 
-  /* "nodetrie/nodetrie.pyx":18
+  /* "nodetrie/nodetrie.pyx":17
  *     return bytes(_str)
  * 
  * cdef unsigned char ** to_cstring_array(list list_str):             # <<<<<<<<<<<<<<
- *     cdef unsigned int i
  *     cdef unsigned char **ret = <unsigned char **>malloc((len(list_str)+1) * sizeof(unsigned char *))
+ *     if not ret:
  */
 
   /* function exit code */
@@ -1661,8 +1640,8 @@ static unsigned char **__pyx_f_8nodetrie_8nodetrie_to_cstring_array(PyObject *__
   return __pyx_r;
 }
 
-/* "nodetrie/nodetrie.pyx":31
- * 
+/* "nodetrie/nodetrie.pyx":29
+ *     return ret
  * 
  * cdef object PyNode_Init(cnode.Node *node):             # <<<<<<<<<<<<<<
  *     """Python Node object factory class for cnode.Node*"""
@@ -1676,19 +1655,19 @@ static PyObject *__pyx_f_8nodetrie_8nodetrie_PyNode_Init(Node *__pyx_v_node) {
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("PyNode_Init", 0);
 
-  /* "nodetrie/nodetrie.pyx":33
+  /* "nodetrie/nodetrie.pyx":31
  * cdef object PyNode_Init(cnode.Node *node):
  *     """Python Node object factory class for cnode.Node*"""
  *     cdef Node _node = Node()             # <<<<<<<<<<<<<<
  *     _node._node = node
  *     return _node
  */
-  __pyx_t_1 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_8nodetrie_8nodetrie_Node), __pyx_empty_tuple, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 33, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_8nodetrie_8nodetrie_Node), __pyx_empty_tuple, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 31, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v__node = ((struct __pyx_obj_8nodetrie_8nodetrie_Node *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "nodetrie/nodetrie.pyx":34
+  /* "nodetrie/nodetrie.pyx":32
  *     """Python Node object factory class for cnode.Node*"""
  *     cdef Node _node = Node()
  *     _node._node = node             # <<<<<<<<<<<<<<
@@ -1697,7 +1676,7 @@ static PyObject *__pyx_f_8nodetrie_8nodetrie_PyNode_Init(Node *__pyx_v_node) {
  */
   __pyx_v__node->_node = __pyx_v_node;
 
-  /* "nodetrie/nodetrie.pyx":35
+  /* "nodetrie/nodetrie.pyx":33
  *     cdef Node _node = Node()
  *     _node._node = node
  *     return _node             # <<<<<<<<<<<<<<
@@ -1709,8 +1688,8 @@ static PyObject *__pyx_f_8nodetrie_8nodetrie_PyNode_Init(Node *__pyx_v_node) {
   __pyx_r = ((PyObject *)__pyx_v__node);
   goto __pyx_L0;
 
-  /* "nodetrie/nodetrie.pyx":31
- * 
+  /* "nodetrie/nodetrie.pyx":29
+ *     return ret
  * 
  * cdef object PyNode_Init(cnode.Node *node):             # <<<<<<<<<<<<<<
  *     """Python Node object factory class for cnode.Node*"""
@@ -1729,7 +1708,7 @@ static PyObject *__pyx_f_8nodetrie_8nodetrie_PyNode_Init(Node *__pyx_v_node) {
   return __pyx_r;
 }
 
-/* "nodetrie/nodetrie.pyx":44
+/* "nodetrie/nodetrie.pyx":42
  *     """
  * 
  *     def __cinit__(self):             # <<<<<<<<<<<<<<
@@ -1758,7 +1737,7 @@ static int __pyx_pf_8nodetrie_8nodetrie_4Node___cinit__(struct __pyx_obj_8nodetr
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__cinit__", 0);
 
-  /* "nodetrie/nodetrie.pyx":45
+  /* "nodetrie/nodetrie.pyx":43
  * 
  *     def __cinit__(self):
  *         self._node = NULL             # <<<<<<<<<<<<<<
@@ -1767,7 +1746,7 @@ static int __pyx_pf_8nodetrie_8nodetrie_4Node___cinit__(struct __pyx_obj_8nodetr
  */
   __pyx_v_self->_node = NULL;
 
-  /* "nodetrie/nodetrie.pyx":44
+  /* "nodetrie/nodetrie.pyx":42
  *     """
  * 
  *     def __cinit__(self):             # <<<<<<<<<<<<<<
@@ -1781,7 +1760,7 @@ static int __pyx_pf_8nodetrie_8nodetrie_4Node___cinit__(struct __pyx_obj_8nodetr
   return __pyx_r;
 }
 
-/* "nodetrie/nodetrie.pyx":47
+/* "nodetrie/nodetrie.pyx":45
  *         self._node = NULL
  * 
  *     def __dealloc__(self):             # <<<<<<<<<<<<<<
@@ -1806,7 +1785,7 @@ static void __pyx_pf_8nodetrie_8nodetrie_4Node_2__dealloc__(struct __pyx_obj_8no
   int __pyx_t_2;
   __Pyx_RefNannySetupContext("__dealloc__", 0);
 
-  /* "nodetrie/nodetrie.pyx":48
+  /* "nodetrie/nodetrie.pyx":46
  * 
  *     def __dealloc__(self):
  *         if self._node is not NULL and self._node.name is NULL:             # <<<<<<<<<<<<<<
@@ -1824,7 +1803,7 @@ static void __pyx_pf_8nodetrie_8nodetrie_4Node_2__dealloc__(struct __pyx_obj_8no
   __pyx_L4_bool_binop_done:;
   if (__pyx_t_1) {
 
-    /* "nodetrie/nodetrie.pyx":49
+    /* "nodetrie/nodetrie.pyx":47
  *     def __dealloc__(self):
  *         if self._node is not NULL and self._node.name is NULL:
  *             cnode.clear(self._node)             # <<<<<<<<<<<<<<
@@ -1833,7 +1812,7 @@ static void __pyx_pf_8nodetrie_8nodetrie_4Node_2__dealloc__(struct __pyx_obj_8no
  */
     clear(__pyx_v_self->_node);
 
-    /* "nodetrie/nodetrie.pyx":48
+    /* "nodetrie/nodetrie.pyx":46
  * 
  *     def __dealloc__(self):
  *         if self._node is not NULL and self._node.name is NULL:             # <<<<<<<<<<<<<<
@@ -1842,7 +1821,7 @@ static void __pyx_pf_8nodetrie_8nodetrie_4Node_2__dealloc__(struct __pyx_obj_8no
  */
   }
 
-  /* "nodetrie/nodetrie.pyx":47
+  /* "nodetrie/nodetrie.pyx":45
  *         self._node = NULL
  * 
  *     def __dealloc__(self):             # <<<<<<<<<<<<<<
@@ -1854,7 +1833,7 @@ static void __pyx_pf_8nodetrie_8nodetrie_4Node_2__dealloc__(struct __pyx_obj_8no
   __Pyx_RefNannyFinishContext();
 }
 
-/* "nodetrie/nodetrie.pyx":55
+/* "nodetrie/nodetrie.pyx":53
  * 
  *         :rtype: list(:py:class:`Node`)"""
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -1886,7 +1865,7 @@ static PyObject *__pyx_pf_8nodetrie_8nodetrie_4Node_8children___get__(struct __p
   PyObject *__pyx_t_5 = NULL;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "nodetrie/nodetrie.pyx":56
+  /* "nodetrie/nodetrie.pyx":54
  *         :rtype: list(:py:class:`Node`)"""
  *         def __get__(self):
  *             if self._node is NULL:             # <<<<<<<<<<<<<<
@@ -1896,7 +1875,7 @@ static PyObject *__pyx_pf_8nodetrie_8nodetrie_4Node_8children___get__(struct __p
   __pyx_t_1 = ((__pyx_v_self->_node == NULL) != 0);
   if (__pyx_t_1) {
 
-    /* "nodetrie/nodetrie.pyx":57
+    /* "nodetrie/nodetrie.pyx":55
  *         def __get__(self):
  *             if self._node is NULL:
  *                 return []             # <<<<<<<<<<<<<<
@@ -1904,13 +1883,13 @@ static PyObject *__pyx_pf_8nodetrie_8nodetrie_4Node_8children___get__(struct __p
  *                 return []
  */
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_2 = PyList_New(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 57, __pyx_L1_error)
+    __pyx_t_2 = PyList_New(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 55, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __pyx_r = __pyx_t_2;
     __pyx_t_2 = 0;
     goto __pyx_L0;
 
-    /* "nodetrie/nodetrie.pyx":56
+    /* "nodetrie/nodetrie.pyx":54
  *         :rtype: list(:py:class:`Node`)"""
  *         def __get__(self):
  *             if self._node is NULL:             # <<<<<<<<<<<<<<
@@ -1919,7 +1898,7 @@ static PyObject *__pyx_pf_8nodetrie_8nodetrie_4Node_8children___get__(struct __p
  */
   }
 
-  /* "nodetrie/nodetrie.pyx":58
+  /* "nodetrie/nodetrie.pyx":56
  *             if self._node is NULL:
  *                 return []
  *             if self._node.children_i == 0:             # <<<<<<<<<<<<<<
@@ -1929,7 +1908,7 @@ static PyObject *__pyx_pf_8nodetrie_8nodetrie_4Node_8children___get__(struct __p
   __pyx_t_1 = ((__pyx_v_self->_node->children_i == 0) != 0);
   if (__pyx_t_1) {
 
-    /* "nodetrie/nodetrie.pyx":59
+    /* "nodetrie/nodetrie.pyx":57
  *                 return []
  *             if self._node.children_i == 0:
  *                 return []             # <<<<<<<<<<<<<<
@@ -1937,13 +1916,13 @@ static PyObject *__pyx_pf_8nodetrie_8nodetrie_4Node_8children___get__(struct __p
  *             return [PyNode_Init(&self._node.children[i])
  */
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_2 = PyList_New(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 59, __pyx_L1_error)
+    __pyx_t_2 = PyList_New(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 57, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __pyx_r = __pyx_t_2;
     __pyx_t_2 = 0;
     goto __pyx_L0;
 
-    /* "nodetrie/nodetrie.pyx":58
+    /* "nodetrie/nodetrie.pyx":56
  *             if self._node is NULL:
  *                 return []
  *             if self._node.children_i == 0:             # <<<<<<<<<<<<<<
@@ -1952,7 +1931,7 @@ static PyObject *__pyx_pf_8nodetrie_8nodetrie_4Node_8children___get__(struct __p
  */
   }
 
-  /* "nodetrie/nodetrie.pyx":61
+  /* "nodetrie/nodetrie.pyx":59
  *                 return []
  *             cdef unsigned int i
  *             return [PyNode_Init(&self._node.children[i])             # <<<<<<<<<<<<<<
@@ -1960,10 +1939,10 @@ static PyObject *__pyx_pf_8nodetrie_8nodetrie_4Node_8children___get__(struct __p
  * 
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_2 = PyList_New(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 61, __pyx_L1_error)
+  __pyx_t_2 = PyList_New(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 59, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
 
-  /* "nodetrie/nodetrie.pyx":62
+  /* "nodetrie/nodetrie.pyx":60
  *             cdef unsigned int i
  *             return [PyNode_Init(&self._node.children[i])
  *                     for i in range(self._node.children_i)]             # <<<<<<<<<<<<<<
@@ -1974,23 +1953,23 @@ static PyObject *__pyx_pf_8nodetrie_8nodetrie_4Node_8children___get__(struct __p
   for (__pyx_t_4 = 0; __pyx_t_4 < __pyx_t_3; __pyx_t_4+=1) {
     __pyx_v_i = __pyx_t_4;
 
-    /* "nodetrie/nodetrie.pyx":61
+    /* "nodetrie/nodetrie.pyx":59
  *                 return []
  *             cdef unsigned int i
  *             return [PyNode_Init(&self._node.children[i])             # <<<<<<<<<<<<<<
  *                     for i in range(self._node.children_i)]
  * 
  */
-    __pyx_t_5 = __pyx_f_8nodetrie_8nodetrie_PyNode_Init((&(__pyx_v_self->_node->children[__pyx_v_i]))); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 61, __pyx_L1_error)
+    __pyx_t_5 = __pyx_f_8nodetrie_8nodetrie_PyNode_Init((&(__pyx_v_self->_node->children[__pyx_v_i]))); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 59, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    if (unlikely(__Pyx_ListComp_Append(__pyx_t_2, (PyObject*)__pyx_t_5))) __PYX_ERR(0, 61, __pyx_L1_error)
+    if (unlikely(__Pyx_ListComp_Append(__pyx_t_2, (PyObject*)__pyx_t_5))) __PYX_ERR(0, 59, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   }
   __pyx_r = __pyx_t_2;
   __pyx_t_2 = 0;
   goto __pyx_L0;
 
-  /* "nodetrie/nodetrie.pyx":55
+  /* "nodetrie/nodetrie.pyx":53
  * 
  *         :rtype: list(:py:class:`Node`)"""
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -2010,7 +1989,7 @@ static PyObject *__pyx_pf_8nodetrie_8nodetrie_4Node_8children___get__(struct __p
   return __pyx_r;
 }
 
-/* "nodetrie/nodetrie.pyx":68
+/* "nodetrie/nodetrie.pyx":66
  * 
  *         :rtype: int"""
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -2038,7 +2017,7 @@ static PyObject *__pyx_pf_8nodetrie_8nodetrie_4Node_13children_size___get__(stru
   PyObject *__pyx_t_2 = NULL;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "nodetrie/nodetrie.pyx":69
+  /* "nodetrie/nodetrie.pyx":67
  *         :rtype: int"""
  *         def __get__(self):
  *             if self._node is not NULL:             # <<<<<<<<<<<<<<
@@ -2048,7 +2027,7 @@ static PyObject *__pyx_pf_8nodetrie_8nodetrie_4Node_13children_size___get__(stru
   __pyx_t_1 = ((__pyx_v_self->_node != NULL) != 0);
   if (__pyx_t_1) {
 
-    /* "nodetrie/nodetrie.pyx":70
+    /* "nodetrie/nodetrie.pyx":68
  *         def __get__(self):
  *             if self._node is not NULL:
  *                 return self._node.children_i             # <<<<<<<<<<<<<<
@@ -2056,13 +2035,13 @@ static PyObject *__pyx_pf_8nodetrie_8nodetrie_4Node_13children_size___get__(stru
  *     property name:
  */
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_2 = __Pyx_PyInt_FromSize_t(__pyx_v_self->_node->children_i); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 70, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyInt_FromSize_t(__pyx_v_self->_node->children_i); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 68, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __pyx_r = __pyx_t_2;
     __pyx_t_2 = 0;
     goto __pyx_L0;
 
-    /* "nodetrie/nodetrie.pyx":69
+    /* "nodetrie/nodetrie.pyx":67
  *         :rtype: int"""
  *         def __get__(self):
  *             if self._node is not NULL:             # <<<<<<<<<<<<<<
@@ -2071,7 +2050,7 @@ static PyObject *__pyx_pf_8nodetrie_8nodetrie_4Node_13children_size___get__(stru
  */
   }
 
-  /* "nodetrie/nodetrie.pyx":68
+  /* "nodetrie/nodetrie.pyx":66
  * 
  *         :rtype: int"""
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -2092,7 +2071,7 @@ static PyObject *__pyx_pf_8nodetrie_8nodetrie_4Node_13children_size___get__(stru
   return __pyx_r;
 }
 
-/* "nodetrie/nodetrie.pyx":77
+/* "nodetrie/nodetrie.pyx":75
  *         :rtype: unicode
  *         """
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -2124,7 +2103,7 @@ static PyObject *__pyx_pf_8nodetrie_8nodetrie_4Node_4name___get__(struct __pyx_o
   PyObject *__pyx_t_6 = NULL;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "nodetrie/nodetrie.pyx":78
+  /* "nodetrie/nodetrie.pyx":76
  *         """
  *         def __get__(self):
  *             if self._node is not NULL and self._node.name is not NULL:             # <<<<<<<<<<<<<<
@@ -2142,7 +2121,7 @@ static PyObject *__pyx_pf_8nodetrie_8nodetrie_4Node_4name___get__(struct __pyx_o
   __pyx_L4_bool_binop_done:;
   if (__pyx_t_1) {
 
-    /* "nodetrie/nodetrie.pyx":79
+    /* "nodetrie/nodetrie.pyx":77
  *         def __get__(self):
  *             if self._node is not NULL and self._node.name is not NULL:
  *                 return self._node.name.decode(ENCODING)             # <<<<<<<<<<<<<<
@@ -2150,9 +2129,9 @@ static PyObject *__pyx_pf_8nodetrie_8nodetrie_4Node_4name___get__(struct __pyx_o
  *     # cpdef list to_array(self):
  */
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_4 = __Pyx_PyBytes_FromCString(__pyx_v_self->_node->name); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 79, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyBytes_FromCString(__pyx_v_self->_node->name); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 77, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_decode); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 79, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_decode); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 77, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __pyx_t_4 = NULL;
@@ -2166,13 +2145,13 @@ static PyObject *__pyx_pf_8nodetrie_8nodetrie_4Node_4name___get__(struct __pyx_o
       }
     }
     if (!__pyx_t_4) {
-      __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_v_8nodetrie_8nodetrie_ENCODING); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 79, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_v_8nodetrie_8nodetrie_ENCODING); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 77, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
     } else {
       #if CYTHON_FAST_PYCALL
       if (PyFunction_Check(__pyx_t_5)) {
         PyObject *__pyx_temp[2] = {__pyx_t_4, __pyx_v_8nodetrie_8nodetrie_ENCODING};
-        __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_5, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 79, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_5, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 77, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
         __Pyx_GOTREF(__pyx_t_3);
       } else
@@ -2180,19 +2159,19 @@ static PyObject *__pyx_pf_8nodetrie_8nodetrie_4Node_4name___get__(struct __pyx_o
       #if CYTHON_FAST_PYCCALL
       if (__Pyx_PyFastCFunction_Check(__pyx_t_5)) {
         PyObject *__pyx_temp[2] = {__pyx_t_4, __pyx_v_8nodetrie_8nodetrie_ENCODING};
-        __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_5, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 79, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_5, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 77, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
         __Pyx_GOTREF(__pyx_t_3);
       } else
       #endif
       {
-        __pyx_t_6 = PyTuple_New(1+1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 79, __pyx_L1_error)
+        __pyx_t_6 = PyTuple_New(1+1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 77, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_6);
         __Pyx_GIVEREF(__pyx_t_4); PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_4); __pyx_t_4 = NULL;
         __Pyx_INCREF(__pyx_v_8nodetrie_8nodetrie_ENCODING);
         __Pyx_GIVEREF(__pyx_v_8nodetrie_8nodetrie_ENCODING);
         PyTuple_SET_ITEM(__pyx_t_6, 0+1, __pyx_v_8nodetrie_8nodetrie_ENCODING);
-        __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_6, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 79, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_6, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 77, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
       }
@@ -2202,7 +2181,7 @@ static PyObject *__pyx_pf_8nodetrie_8nodetrie_4Node_4name___get__(struct __pyx_o
     __pyx_t_3 = 0;
     goto __pyx_L0;
 
-    /* "nodetrie/nodetrie.pyx":78
+    /* "nodetrie/nodetrie.pyx":76
  *         """
  *         def __get__(self):
  *             if self._node is not NULL and self._node.name is not NULL:             # <<<<<<<<<<<<<<
@@ -2211,7 +2190,7 @@ static PyObject *__pyx_pf_8nodetrie_8nodetrie_4Node_4name___get__(struct __pyx_o
  */
   }
 
-  /* "nodetrie/nodetrie.pyx":77
+  /* "nodetrie/nodetrie.pyx":75
  *         :rtype: unicode
  *         """
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -2235,7 +2214,7 @@ static PyObject *__pyx_pf_8nodetrie_8nodetrie_4Node_4name___get__(struct __pyx_o
   return __pyx_r;
 }
 
-/* "nodetrie/nodetrie.pyx":97
+/* "nodetrie/nodetrie.pyx":95
  *     #     return PyNode_Init(new_root)
  * 
  *     def is_leaf(self):             # <<<<<<<<<<<<<<
@@ -2263,7 +2242,7 @@ static PyObject *__pyx_pf_8nodetrie_8nodetrie_4Node_4is_leaf(struct __pyx_obj_8n
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("is_leaf", 0);
 
-  /* "nodetrie/nodetrie.pyx":102
+  /* "nodetrie/nodetrie.pyx":100
  *         :rtype: bool
  *         """
  *         return self._is_leaf(self._node)             # <<<<<<<<<<<<<<
@@ -2271,13 +2250,13 @@ static PyObject *__pyx_pf_8nodetrie_8nodetrie_4Node_4is_leaf(struct __pyx_obj_8n
  *     cdef bint _is_leaf(self, cnode.Node *node):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyBool_FromLong(((struct __pyx_vtabstruct_8nodetrie_8nodetrie_Node *)__pyx_v_self->__pyx_vtab)->_is_leaf(__pyx_v_self, __pyx_v_self->_node)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 102, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyBool_FromLong(((struct __pyx_vtabstruct_8nodetrie_8nodetrie_Node *)__pyx_v_self->__pyx_vtab)->_is_leaf(__pyx_v_self, __pyx_v_self->_node)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 100, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "nodetrie/nodetrie.pyx":97
+  /* "nodetrie/nodetrie.pyx":95
  *     #     return PyNode_Init(new_root)
  * 
  *     def is_leaf(self):             # <<<<<<<<<<<<<<
@@ -2296,7 +2275,7 @@ static PyObject *__pyx_pf_8nodetrie_8nodetrie_4Node_4is_leaf(struct __pyx_obj_8n
   return __pyx_r;
 }
 
-/* "nodetrie/nodetrie.pyx":104
+/* "nodetrie/nodetrie.pyx":102
  *         return self._is_leaf(self._node)
  * 
  *     cdef bint _is_leaf(self, cnode.Node *node):             # <<<<<<<<<<<<<<
@@ -2309,7 +2288,7 @@ static int __pyx_f_8nodetrie_8nodetrie_4Node__is_leaf(CYTHON_UNUSED struct __pyx
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("_is_leaf", 0);
 
-  /* "nodetrie/nodetrie.pyx":105
+  /* "nodetrie/nodetrie.pyx":103
  * 
  *     cdef bint _is_leaf(self, cnode.Node *node):
  *         return cnode.is_leaf(node)             # <<<<<<<<<<<<<<
@@ -2319,7 +2298,7 @@ static int __pyx_f_8nodetrie_8nodetrie_4Node__is_leaf(CYTHON_UNUSED struct __pyx
   __pyx_r = is_leaf(__pyx_v_node);
   goto __pyx_L0;
 
-  /* "nodetrie/nodetrie.pyx":104
+  /* "nodetrie/nodetrie.pyx":102
  *         return self._is_leaf(self._node)
  * 
  *     cdef bint _is_leaf(self, cnode.Node *node):             # <<<<<<<<<<<<<<
@@ -2333,7 +2312,7 @@ static int __pyx_f_8nodetrie_8nodetrie_4Node__is_leaf(CYTHON_UNUSED struct __pyx
   return __pyx_r;
 }
 
-/* "nodetrie/nodetrie.pyx":107
+/* "nodetrie/nodetrie.pyx":105
  *         return cnode.is_leaf(node)
  * 
  *     def insert(self, path, str separator='.'):             # <<<<<<<<<<<<<<
@@ -2375,7 +2354,7 @@ static PyObject *__pyx_pw_8nodetrie_8nodetrie_4Node_7insert(PyObject *__pyx_v_se
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "insert") < 0)) __PYX_ERR(0, 107, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "insert") < 0)) __PYX_ERR(0, 105, __pyx_L3_error)
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -2390,13 +2369,13 @@ static PyObject *__pyx_pw_8nodetrie_8nodetrie_4Node_7insert(PyObject *__pyx_v_se
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("insert", 0, 1, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 107, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("insert", 0, 1, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 105, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("nodetrie.nodetrie.Node.insert", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_separator), (&PyString_Type), 1, "separator", 1))) __PYX_ERR(0, 107, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_separator), (&PyString_Type), 1, "separator", 1))) __PYX_ERR(0, 105, __pyx_L1_error)
   __pyx_r = __pyx_pf_8nodetrie_8nodetrie_4Node_6insert(((struct __pyx_obj_8nodetrie_8nodetrie_Node *)__pyx_v_self), __pyx_v_path, __pyx_v_separator);
 
   /* function exit code */
@@ -2418,14 +2397,14 @@ static PyObject *__pyx_pf_8nodetrie_8nodetrie_4Node_6insert(struct __pyx_obj_8no
   PyObject *__pyx_t_4 = NULL;
   __Pyx_RefNannySetupContext("insert", 0);
 
-  /* "nodetrie/nodetrie.pyx":112
+  /* "nodetrie/nodetrie.pyx":110
  *         :param path: str
  *         :param separator: Separator to split path on"""
  *         cdef list paths = path.split(separator)             # <<<<<<<<<<<<<<
  *         return self.insert_split_path(paths)
  * 
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_path, __pyx_n_s_split); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 112, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_path, __pyx_n_s_split); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 110, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
@@ -2438,13 +2417,13 @@ static PyObject *__pyx_pf_8nodetrie_8nodetrie_4Node_6insert(struct __pyx_obj_8no
     }
   }
   if (!__pyx_t_3) {
-    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_v_separator); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 112, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_v_separator); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 110, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
   } else {
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_2)) {
       PyObject *__pyx_temp[2] = {__pyx_t_3, __pyx_v_separator};
-      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 112, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 110, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_GOTREF(__pyx_t_1);
     } else
@@ -2452,29 +2431,29 @@ static PyObject *__pyx_pf_8nodetrie_8nodetrie_4Node_6insert(struct __pyx_obj_8no
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
       PyObject *__pyx_temp[2] = {__pyx_t_3, __pyx_v_separator};
-      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 112, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 110, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_GOTREF(__pyx_t_1);
     } else
     #endif
     {
-      __pyx_t_4 = PyTuple_New(1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 112, __pyx_L1_error)
+      __pyx_t_4 = PyTuple_New(1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 110, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_GIVEREF(__pyx_t_3); PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_3); __pyx_t_3 = NULL;
       __Pyx_INCREF(__pyx_v_separator);
       __Pyx_GIVEREF(__pyx_v_separator);
       PyTuple_SET_ITEM(__pyx_t_4, 0+1, __pyx_v_separator);
-      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_4, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 112, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_4, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 110, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     }
   }
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (!(likely(PyList_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 112, __pyx_L1_error)
+  if (!(likely(PyList_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 110, __pyx_L1_error)
   __pyx_v_paths = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "nodetrie/nodetrie.pyx":113
+  /* "nodetrie/nodetrie.pyx":111
  *         :param separator: Separator to split path on"""
  *         cdef list paths = path.split(separator)
  *         return self.insert_split_path(paths)             # <<<<<<<<<<<<<<
@@ -2482,13 +2461,13 @@ static PyObject *__pyx_pf_8nodetrie_8nodetrie_4Node_6insert(struct __pyx_obj_8no
  *     cdef cnode.Node* _insert(self, unsigned char *name) nogil:
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_void_to_None(((struct __pyx_vtabstruct_8nodetrie_8nodetrie_Node *)__pyx_v_self->__pyx_vtab)->insert_split_path(__pyx_v_self, __pyx_v_paths, 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 113, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_void_to_None(((struct __pyx_vtabstruct_8nodetrie_8nodetrie_Node *)__pyx_v_self->__pyx_vtab)->insert_split_path(__pyx_v_self, __pyx_v_paths, 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 111, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "nodetrie/nodetrie.pyx":107
+  /* "nodetrie/nodetrie.pyx":105
  *         return cnode.is_leaf(node)
  * 
  *     def insert(self, path, str separator='.'):             # <<<<<<<<<<<<<<
@@ -2511,7 +2490,7 @@ static PyObject *__pyx_pf_8nodetrie_8nodetrie_4Node_6insert(struct __pyx_obj_8no
   return __pyx_r;
 }
 
-/* "nodetrie/nodetrie.pyx":115
+/* "nodetrie/nodetrie.pyx":113
  *         return self.insert_split_path(paths)
  * 
  *     cdef cnode.Node* _insert(self, unsigned char *name) nogil:             # <<<<<<<<<<<<<<
@@ -2522,7 +2501,7 @@ static PyObject *__pyx_pf_8nodetrie_8nodetrie_4Node_6insert(struct __pyx_obj_8no
 static Node *__pyx_f_8nodetrie_8nodetrie_4Node__insert(struct __pyx_obj_8nodetrie_8nodetrie_Node *__pyx_v_self, unsigned char *__pyx_v_name) {
   Node *__pyx_r;
 
-  /* "nodetrie/nodetrie.pyx":116
+  /* "nodetrie/nodetrie.pyx":114
  * 
  *     cdef cnode.Node* _insert(self, unsigned char *name) nogil:
  *         return cnode.insert(self._node, name)             # <<<<<<<<<<<<<<
@@ -2532,7 +2511,7 @@ static Node *__pyx_f_8nodetrie_8nodetrie_4Node__insert(struct __pyx_obj_8nodetri
   __pyx_r = insert(__pyx_v_self->_node, __pyx_v_name);
   goto __pyx_L0;
 
-  /* "nodetrie/nodetrie.pyx":115
+  /* "nodetrie/nodetrie.pyx":113
  *         return self.insert_split_path(paths)
  * 
  *     cdef cnode.Node* _insert(self, unsigned char *name) nogil:             # <<<<<<<<<<<<<<
@@ -2545,7 +2524,7 @@ static Node *__pyx_f_8nodetrie_8nodetrie_4Node__insert(struct __pyx_obj_8nodetri
   return __pyx_r;
 }
 
-/* "nodetrie/nodetrie.pyx":118
+/* "nodetrie/nodetrie.pyx":116
  *         return cnode.insert(self._node, name)
  * 
  *     cpdef void insert_split_path(self, list paths):             # <<<<<<<<<<<<<<
@@ -2569,7 +2548,7 @@ static void __pyx_f_8nodetrie_8nodetrie_4Node_insert_split_path(struct __pyx_obj
   if (unlikely(__pyx_skip_dispatch)) ;
   /* Check if overridden in Python */
   else if (unlikely(Py_TYPE(((PyObject *)__pyx_v_self))->tp_dictoffset != 0)) {
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_insert_split_path); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 118, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_insert_split_path); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 116, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)__pyx_pw_8nodetrie_8nodetrie_4Node_9insert_split_path)) {
       __Pyx_INCREF(__pyx_t_1);
@@ -2584,13 +2563,13 @@ static void __pyx_f_8nodetrie_8nodetrie_4Node_insert_split_path(struct __pyx_obj
         }
       }
       if (!__pyx_t_4) {
-        __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_v_paths); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 118, __pyx_L1_error)
+        __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_v_paths); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 116, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
       } else {
         #if CYTHON_FAST_PYCALL
         if (PyFunction_Check(__pyx_t_3)) {
           PyObject *__pyx_temp[2] = {__pyx_t_4, __pyx_v_paths};
-          __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 118, __pyx_L1_error)
+          __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 116, __pyx_L1_error)
           __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
           __Pyx_GOTREF(__pyx_t_2);
         } else
@@ -2598,19 +2577,19 @@ static void __pyx_f_8nodetrie_8nodetrie_4Node_insert_split_path(struct __pyx_obj
         #if CYTHON_FAST_PYCCALL
         if (__Pyx_PyFastCFunction_Check(__pyx_t_3)) {
           PyObject *__pyx_temp[2] = {__pyx_t_4, __pyx_v_paths};
-          __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 118, __pyx_L1_error)
+          __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 116, __pyx_L1_error)
           __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
           __Pyx_GOTREF(__pyx_t_2);
         } else
         #endif
         {
-          __pyx_t_5 = PyTuple_New(1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 118, __pyx_L1_error)
+          __pyx_t_5 = PyTuple_New(1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 116, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_5);
           __Pyx_GIVEREF(__pyx_t_4); PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_4); __pyx_t_4 = NULL;
           __Pyx_INCREF(__pyx_v_paths);
           __Pyx_GIVEREF(__pyx_v_paths);
           PyTuple_SET_ITEM(__pyx_t_5, 0+1, __pyx_v_paths);
-          __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_5, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 118, __pyx_L1_error)
+          __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_5, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 116, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
           __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
         }
@@ -2623,7 +2602,7 @@ static void __pyx_f_8nodetrie_8nodetrie_4Node_insert_split_path(struct __pyx_obj
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   }
 
-  /* "nodetrie/nodetrie.pyx":122
+  /* "nodetrie/nodetrie.pyx":120
  * 
  *         :param paths: List of paths to insert"""
  *         if len(paths) == 0:             # <<<<<<<<<<<<<<
@@ -2632,13 +2611,13 @@ static void __pyx_f_8nodetrie_8nodetrie_4Node_insert_split_path(struct __pyx_obj
  */
   if (unlikely(__pyx_v_paths == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "object of type 'NoneType' has no len()");
-    __PYX_ERR(0, 122, __pyx_L1_error)
+    __PYX_ERR(0, 120, __pyx_L1_error)
   }
-  __pyx_t_6 = PyList_GET_SIZE(__pyx_v_paths); if (unlikely(__pyx_t_6 == -1)) __PYX_ERR(0, 122, __pyx_L1_error)
+  __pyx_t_6 = PyList_GET_SIZE(__pyx_v_paths); if (unlikely(__pyx_t_6 == -1)) __PYX_ERR(0, 120, __pyx_L1_error)
   __pyx_t_7 = ((__pyx_t_6 == 0) != 0);
   if (__pyx_t_7) {
 
-    /* "nodetrie/nodetrie.pyx":123
+    /* "nodetrie/nodetrie.pyx":121
  *         :param paths: List of paths to insert"""
  *         if len(paths) == 0:
  *             return             # <<<<<<<<<<<<<<
@@ -2647,7 +2626,7 @@ static void __pyx_f_8nodetrie_8nodetrie_4Node_insert_split_path(struct __pyx_obj
  */
     goto __pyx_L0;
 
-    /* "nodetrie/nodetrie.pyx":122
+    /* "nodetrie/nodetrie.pyx":120
  * 
  *         :param paths: List of paths to insert"""
  *         if len(paths) == 0:             # <<<<<<<<<<<<<<
@@ -2656,34 +2635,25 @@ static void __pyx_f_8nodetrie_8nodetrie_4Node_insert_split_path(struct __pyx_obj
  */
   }
 
-  /* "nodetrie/nodetrie.pyx":124
+  /* "nodetrie/nodetrie.pyx":122
  *         if len(paths) == 0:
  *             return
  *         cdef unsigned char **c_paths = to_cstring_array(paths)             # <<<<<<<<<<<<<<
  *         self._insert_split_path(c_paths)
- *         free(c_paths)
+ * 
  */
   __pyx_v_c_paths = __pyx_f_8nodetrie_8nodetrie_to_cstring_array(__pyx_v_paths);
 
-  /* "nodetrie/nodetrie.pyx":125
+  /* "nodetrie/nodetrie.pyx":123
  *             return
  *         cdef unsigned char **c_paths = to_cstring_array(paths)
  *         self._insert_split_path(c_paths)             # <<<<<<<<<<<<<<
- *         free(c_paths)
- * 
- */
-  ((struct __pyx_vtabstruct_8nodetrie_8nodetrie_Node *)__pyx_v_self->__pyx_vtab)->_insert_split_path(__pyx_v_self, __pyx_v_c_paths);
-
-  /* "nodetrie/nodetrie.pyx":126
- *         cdef unsigned char **c_paths = to_cstring_array(paths)
- *         self._insert_split_path(c_paths)
- *         free(c_paths)             # <<<<<<<<<<<<<<
  * 
  *     cdef void _insert_split_path(self, unsigned char **paths) nogil:
  */
-  free(__pyx_v_c_paths);
+  ((struct __pyx_vtabstruct_8nodetrie_8nodetrie_Node *)__pyx_v_self->__pyx_vtab)->_insert_split_path(__pyx_v_self, __pyx_v_c_paths);
 
-  /* "nodetrie/nodetrie.pyx":118
+  /* "nodetrie/nodetrie.pyx":116
  *         return cnode.insert(self._node, name)
  * 
  *     cpdef void insert_split_path(self, list paths):             # <<<<<<<<<<<<<<
@@ -2711,7 +2681,7 @@ static PyObject *__pyx_pw_8nodetrie_8nodetrie_4Node_9insert_split_path(PyObject 
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("insert_split_path (wrapper)", 0);
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_paths), (&PyList_Type), 1, "paths", 1))) __PYX_ERR(0, 118, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_paths), (&PyList_Type), 1, "paths", 1))) __PYX_ERR(0, 116, __pyx_L1_error)
   __pyx_r = __pyx_pf_8nodetrie_8nodetrie_4Node_8insert_split_path(((struct __pyx_obj_8nodetrie_8nodetrie_Node *)__pyx_v_self), ((PyObject*)__pyx_v_paths));
 
   /* function exit code */
@@ -2729,7 +2699,7 @@ static PyObject *__pyx_pf_8nodetrie_8nodetrie_4Node_8insert_split_path(struct __
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("insert_split_path", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_void_to_None(__pyx_f_8nodetrie_8nodetrie_4Node_insert_split_path(__pyx_v_self, __pyx_v_paths, 1)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 118, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_void_to_None(__pyx_f_8nodetrie_8nodetrie_4Node_insert_split_path(__pyx_v_self, __pyx_v_paths, 1)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 116, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -2746,8 +2716,8 @@ static PyObject *__pyx_pf_8nodetrie_8nodetrie_4Node_8insert_split_path(struct __
   return __pyx_r;
 }
 
-/* "nodetrie/nodetrie.pyx":128
- *         free(c_paths)
+/* "nodetrie/nodetrie.pyx":125
+ *         self._insert_split_path(c_paths)
  * 
  *     cdef void _insert_split_path(self, unsigned char **paths) nogil:             # <<<<<<<<<<<<<<
  *         if self._node == NULL:
@@ -2759,7 +2729,7 @@ static void __pyx_f_8nodetrie_8nodetrie_4Node__insert_split_path(struct __pyx_ob
   int __pyx_t_1;
   Node *__pyx_t_2;
 
-  /* "nodetrie/nodetrie.pyx":129
+  /* "nodetrie/nodetrie.pyx":126
  * 
  *     cdef void _insert_split_path(self, unsigned char **paths) nogil:
  *         if self._node == NULL:             # <<<<<<<<<<<<<<
@@ -2769,7 +2739,7 @@ static void __pyx_f_8nodetrie_8nodetrie_4Node__insert_split_path(struct __pyx_ob
   __pyx_t_1 = ((__pyx_v_self->_node == NULL) != 0);
   if (__pyx_t_1) {
 
-    /* "nodetrie/nodetrie.pyx":130
+    /* "nodetrie/nodetrie.pyx":127
  *     cdef void _insert_split_path(self, unsigned char **paths) nogil:
  *         if self._node == NULL:
  *             self._node = cnode.init_node()             # <<<<<<<<<<<<<<
@@ -2778,7 +2748,7 @@ static void __pyx_f_8nodetrie_8nodetrie_4Node__insert_split_path(struct __pyx_ob
  */
     __pyx_v_self->_node = init_node();
 
-    /* "nodetrie/nodetrie.pyx":129
+    /* "nodetrie/nodetrie.pyx":126
  * 
  *     cdef void _insert_split_path(self, unsigned char **paths) nogil:
  *         if self._node == NULL:             # <<<<<<<<<<<<<<
@@ -2787,27 +2757,36 @@ static void __pyx_f_8nodetrie_8nodetrie_4Node__insert_split_path(struct __pyx_ob
  */
   }
 
-  /* "nodetrie/nodetrie.pyx":131
+  /* "nodetrie/nodetrie.pyx":128
  *         if self._node == NULL:
  *             self._node = cnode.init_node()
  *         _node = self._node             # <<<<<<<<<<<<<<
  *         cnode.insert_paths(self._node, paths)
- * 
+ *         free(paths)
  */
   __pyx_t_2 = __pyx_v_self->_node;
   __pyx_v__node = __pyx_t_2;
 
-  /* "nodetrie/nodetrie.pyx":132
+  /* "nodetrie/nodetrie.pyx":129
  *             self._node = cnode.init_node()
  *         _node = self._node
  *         cnode.insert_paths(self._node, paths)             # <<<<<<<<<<<<<<
+ *         free(paths)
  * 
- *     def query(self, query):
  */
   insert_paths(__pyx_v_self->_node, __pyx_v_paths);
 
-  /* "nodetrie/nodetrie.pyx":128
- *         free(c_paths)
+  /* "nodetrie/nodetrie.pyx":130
+ *         _node = self._node
+ *         cnode.insert_paths(self._node, paths)
+ *         free(paths)             # <<<<<<<<<<<<<<
+ * 
+ *     def query(self, query):
+ */
+  free(__pyx_v_paths);
+
+  /* "nodetrie/nodetrie.pyx":125
+ *         self._insert_split_path(c_paths)
  * 
  *     cdef void _insert_split_path(self, unsigned char **paths) nogil:             # <<<<<<<<<<<<<<
  *         if self._node == NULL:
@@ -2817,8 +2796,8 @@ static void __pyx_f_8nodetrie_8nodetrie_4Node__insert_split_path(struct __pyx_ob
   /* function exit code */
 }
 
-/* "nodetrie/nodetrie.pyx":134
- *         cnode.insert_paths(self._node, paths)
+/* "nodetrie/nodetrie.pyx":132
+ *         free(paths)
  * 
  *     def query(self, query):             # <<<<<<<<<<<<<<
  *         """Return nodes matching Graphite glob pattern query"""
@@ -2840,7 +2819,7 @@ static PyObject *__pyx_pw_8nodetrie_8nodetrie_4Node_11query(PyObject *__pyx_v_se
 }
 static PyObject *__pyx_gb_8nodetrie_8nodetrie_4Node_5query_2generator1(__pyx_CoroutineObject *__pyx_generator, PyObject *__pyx_sent_value); /* proto */
 
-/* "nodetrie/nodetrie.pyx":138
+/* "nodetrie/nodetrie.pyx":136
  *         cdef list nodes = sorted(self.search(self, query.split('.'), []))
  *         cdef Node node
  *         return (('.'.join(path), node,)             # <<<<<<<<<<<<<<
@@ -2857,7 +2836,7 @@ static PyObject *__pyx_pf_8nodetrie_8nodetrie_4Node_5query_genexpr(PyObject *__p
   if (unlikely(!__pyx_cur_scope)) {
     __pyx_cur_scope = ((struct __pyx_obj_8nodetrie_8nodetrie___pyx_scope_struct_1_genexpr *)Py_None);
     __Pyx_INCREF(Py_None);
-    __PYX_ERR(0, 138, __pyx_L1_error)
+    __PYX_ERR(0, 136, __pyx_L1_error)
   } else {
     __Pyx_GOTREF(__pyx_cur_scope);
   }
@@ -2865,7 +2844,7 @@ static PyObject *__pyx_pf_8nodetrie_8nodetrie_4Node_5query_genexpr(PyObject *__p
   __Pyx_INCREF(((PyObject *)__pyx_cur_scope->__pyx_outer_scope));
   __Pyx_GIVEREF(__pyx_cur_scope->__pyx_outer_scope);
   {
-    __pyx_CoroutineObject *gen = __Pyx_Generator_New((__pyx_coroutine_body_t) __pyx_gb_8nodetrie_8nodetrie_4Node_5query_2generator1, (PyObject *) __pyx_cur_scope, __pyx_n_s_genexpr, __pyx_n_s_query_locals_genexpr, __pyx_n_s_nodetrie_nodetrie); if (unlikely(!gen)) __PYX_ERR(0, 138, __pyx_L1_error)
+    __pyx_CoroutineObject *gen = __Pyx_Generator_New((__pyx_coroutine_body_t) __pyx_gb_8nodetrie_8nodetrie_4Node_5query_2generator1, (PyObject *) __pyx_cur_scope, __pyx_n_s_genexpr, __pyx_n_s_query_locals_genexpr, __pyx_n_s_nodetrie_nodetrie); if (unlikely(!gen)) __PYX_ERR(0, 136, __pyx_L1_error)
     __Pyx_DECREF(__pyx_cur_scope);
     __Pyx_RefNannyFinishContext();
     return (PyObject *) gen;
@@ -2902,27 +2881,27 @@ static PyObject *__pyx_gb_8nodetrie_8nodetrie_4Node_5query_2generator1(__pyx_Cor
     return NULL;
   }
   __pyx_L3_first_run:;
-  if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 138, __pyx_L1_error)
+  if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 136, __pyx_L1_error)
 
-  /* "nodetrie/nodetrie.pyx":139
+  /* "nodetrie/nodetrie.pyx":137
  *         cdef Node node
  *         return (('.'.join(path), node,)
  *                 for path, node in nodes)             # <<<<<<<<<<<<<<
  * 
  *     cdef list _get_matched_children(self, sub_query, Node node):
  */
-  if (unlikely(!__pyx_cur_scope->__pyx_outer_scope->__pyx_v_nodes)) { __Pyx_RaiseClosureNameError("nodes"); __PYX_ERR(0, 139, __pyx_L1_error) }
+  if (unlikely(!__pyx_cur_scope->__pyx_outer_scope->__pyx_v_nodes)) { __Pyx_RaiseClosureNameError("nodes"); __PYX_ERR(0, 137, __pyx_L1_error) }
   if (unlikely(__pyx_cur_scope->__pyx_outer_scope->__pyx_v_nodes == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not iterable");
-    __PYX_ERR(0, 139, __pyx_L1_error)
+    __PYX_ERR(0, 137, __pyx_L1_error)
   }
   __pyx_t_1 = __pyx_cur_scope->__pyx_outer_scope->__pyx_v_nodes; __Pyx_INCREF(__pyx_t_1); __pyx_t_2 = 0;
   for (;;) {
     if (__pyx_t_2 >= PyList_GET_SIZE(__pyx_t_1)) break;
     #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-    __pyx_t_3 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_2); __Pyx_INCREF(__pyx_t_3); __pyx_t_2++; if (unlikely(0 < 0)) __PYX_ERR(0, 139, __pyx_L1_error)
+    __pyx_t_3 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_2); __Pyx_INCREF(__pyx_t_3); __pyx_t_2++; if (unlikely(0 < 0)) __PYX_ERR(0, 137, __pyx_L1_error)
     #else
-    __pyx_t_3 = PySequence_ITEM(__pyx_t_1, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 139, __pyx_L1_error)
+    __pyx_t_3 = PySequence_ITEM(__pyx_t_1, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 137, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     #endif
     if ((likely(PyTuple_CheckExact(__pyx_t_3))) || (PyList_CheckExact(__pyx_t_3))) {
@@ -2935,7 +2914,7 @@ static PyObject *__pyx_gb_8nodetrie_8nodetrie_4Node_5query_2generator1(__pyx_Cor
       if (unlikely(size != 2)) {
         if (size > 2) __Pyx_RaiseTooManyValuesError(2);
         else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-        __PYX_ERR(0, 139, __pyx_L1_error)
+        __PYX_ERR(0, 137, __pyx_L1_error)
       }
       #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
       if (likely(PyTuple_CheckExact(sequence))) {
@@ -2948,15 +2927,15 @@ static PyObject *__pyx_gb_8nodetrie_8nodetrie_4Node_5query_2generator1(__pyx_Cor
       __Pyx_INCREF(__pyx_t_4);
       __Pyx_INCREF(__pyx_t_5);
       #else
-      __pyx_t_4 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 139, __pyx_L1_error)
+      __pyx_t_4 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 137, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
-      __pyx_t_5 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 139, __pyx_L1_error)
+      __pyx_t_5 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 137, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       #endif
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     } else {
       Py_ssize_t index = -1;
-      __pyx_t_6 = PyObject_GetIter(__pyx_t_3); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 139, __pyx_L1_error)
+      __pyx_t_6 = PyObject_GetIter(__pyx_t_3); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 137, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_6);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       __pyx_t_7 = Py_TYPE(__pyx_t_6)->tp_iternext;
@@ -2964,7 +2943,7 @@ static PyObject *__pyx_gb_8nodetrie_8nodetrie_4Node_5query_2generator1(__pyx_Cor
       __Pyx_GOTREF(__pyx_t_4);
       index = 1; __pyx_t_5 = __pyx_t_7(__pyx_t_6); if (unlikely(!__pyx_t_5)) goto __pyx_L6_unpacking_failed;
       __Pyx_GOTREF(__pyx_t_5);
-      if (__Pyx_IternextUnpackEndCheck(__pyx_t_7(__pyx_t_6), 2) < 0) __PYX_ERR(0, 139, __pyx_L1_error)
+      if (__Pyx_IternextUnpackEndCheck(__pyx_t_7(__pyx_t_6), 2) < 0) __PYX_ERR(0, 137, __pyx_L1_error)
       __pyx_t_7 = NULL;
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
       goto __pyx_L7_unpacking_done;
@@ -2972,7 +2951,7 @@ static PyObject *__pyx_gb_8nodetrie_8nodetrie_4Node_5query_2generator1(__pyx_Cor
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
       __pyx_t_7 = NULL;
       if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-      __PYX_ERR(0, 139, __pyx_L1_error)
+      __PYX_ERR(0, 137, __pyx_L1_error)
       __pyx_L7_unpacking_done:;
     }
     __Pyx_XGOTREF(__pyx_cur_scope->__pyx_v_path);
@@ -2984,16 +2963,16 @@ static PyObject *__pyx_gb_8nodetrie_8nodetrie_4Node_5query_2generator1(__pyx_Cor
     __Pyx_GIVEREF(__pyx_t_5);
     __pyx_t_5 = 0;
 
-    /* "nodetrie/nodetrie.pyx":138
+    /* "nodetrie/nodetrie.pyx":136
  *         cdef list nodes = sorted(self.search(self, query.split('.'), []))
  *         cdef Node node
  *         return (('.'.join(path), node,)             # <<<<<<<<<<<<<<
  *                 for path, node in nodes)
  * 
  */
-    __pyx_t_3 = __Pyx_PyString_Join(__pyx_kp_s_, __pyx_cur_scope->__pyx_v_path); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 138, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyString_Join(__pyx_kp_s_, __pyx_cur_scope->__pyx_v_path); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 136, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_5 = PyTuple_New(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 138, __pyx_L1_error)
+    __pyx_t_5 = PyTuple_New(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 136, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_GIVEREF(__pyx_t_3);
     PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_3);
@@ -3016,9 +2995,9 @@ static PyObject *__pyx_gb_8nodetrie_8nodetrie_4Node_5query_2generator1(__pyx_Cor
     __pyx_cur_scope->__pyx_t_0 = 0;
     __Pyx_XGOTREF(__pyx_t_1);
     __pyx_t_2 = __pyx_cur_scope->__pyx_t_1;
-    if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 138, __pyx_L1_error)
+    if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 136, __pyx_L1_error)
 
-    /* "nodetrie/nodetrie.pyx":139
+    /* "nodetrie/nodetrie.pyx":137
  *         cdef Node node
  *         return (('.'.join(path), node,)
  *                 for path, node in nodes)             # <<<<<<<<<<<<<<
@@ -3029,7 +3008,7 @@ static PyObject *__pyx_gb_8nodetrie_8nodetrie_4Node_5query_2generator1(__pyx_Cor
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   CYTHON_MAYBE_UNUSED_VAR(__pyx_cur_scope);
 
-  /* "nodetrie/nodetrie.pyx":138
+  /* "nodetrie/nodetrie.pyx":136
  *         cdef list nodes = sorted(self.search(self, query.split('.'), []))
  *         cdef Node node
  *         return (('.'.join(path), node,)             # <<<<<<<<<<<<<<
@@ -3055,8 +3034,8 @@ static PyObject *__pyx_gb_8nodetrie_8nodetrie_4Node_5query_2generator1(__pyx_Cor
   return __pyx_r;
 }
 
-/* "nodetrie/nodetrie.pyx":134
- *         cnode.insert_paths(self._node, paths)
+/* "nodetrie/nodetrie.pyx":132
+ *         free(paths)
  * 
  *     def query(self, query):             # <<<<<<<<<<<<<<
  *         """Return nodes matching Graphite glob pattern query"""
@@ -3081,26 +3060,26 @@ static PyObject *__pyx_pf_8nodetrie_8nodetrie_4Node_10query(struct __pyx_obj_8no
   if (unlikely(!__pyx_cur_scope)) {
     __pyx_cur_scope = ((struct __pyx_obj_8nodetrie_8nodetrie___pyx_scope_struct__query *)Py_None);
     __Pyx_INCREF(Py_None);
-    __PYX_ERR(0, 134, __pyx_L1_error)
+    __PYX_ERR(0, 132, __pyx_L1_error)
   } else {
     __Pyx_GOTREF(__pyx_cur_scope);
   }
 
-  /* "nodetrie/nodetrie.pyx":136
+  /* "nodetrie/nodetrie.pyx":134
  *     def query(self, query):
  *         """Return nodes matching Graphite glob pattern query"""
  *         cdef list nodes = sorted(self.search(self, query.split('.'), []))             # <<<<<<<<<<<<<<
  *         cdef Node node
  *         return (('.'.join(path), node,)
  */
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_search); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 136, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_search); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 134, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_query, __pyx_n_s_split); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 136, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_query, __pyx_n_s_split); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 134, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_tuple__2, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 136, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_tuple__2, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 134, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = PyList_New(0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 136, __pyx_L1_error)
+  __pyx_t_4 = PyList_New(0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 134, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __pyx_t_6 = NULL;
   __pyx_t_7 = 0;
@@ -3117,7 +3096,7 @@ static PyObject *__pyx_pf_8nodetrie_8nodetrie_4Node_10query(struct __pyx_obj_8no
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_3)) {
     PyObject *__pyx_temp[4] = {__pyx_t_6, ((PyObject *)__pyx_v_self), __pyx_t_5, __pyx_t_4};
-    __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_7, 3+__pyx_t_7); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 136, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_7, 3+__pyx_t_7); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 134, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
@@ -3127,7 +3106,7 @@ static PyObject *__pyx_pf_8nodetrie_8nodetrie_4Node_10query(struct __pyx_obj_8no
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_3)) {
     PyObject *__pyx_temp[4] = {__pyx_t_6, ((PyObject *)__pyx_v_self), __pyx_t_5, __pyx_t_4};
-    __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_7, 3+__pyx_t_7); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 136, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_7, 3+__pyx_t_7); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 134, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
@@ -3135,7 +3114,7 @@ static PyObject *__pyx_pf_8nodetrie_8nodetrie_4Node_10query(struct __pyx_obj_8no
   } else
   #endif
   {
-    __pyx_t_8 = PyTuple_New(3+__pyx_t_7); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 136, __pyx_L1_error)
+    __pyx_t_8 = PyTuple_New(3+__pyx_t_7); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 134, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
     if (__pyx_t_6) {
       __Pyx_GIVEREF(__pyx_t_6); PyTuple_SET_ITEM(__pyx_t_8, 0, __pyx_t_6); __pyx_t_6 = NULL;
@@ -3149,22 +3128,22 @@ static PyObject *__pyx_pf_8nodetrie_8nodetrie_4Node_10query(struct __pyx_obj_8no
     PyTuple_SET_ITEM(__pyx_t_8, 2+__pyx_t_7, __pyx_t_4);
     __pyx_t_5 = 0;
     __pyx_t_4 = 0;
-    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_8, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 136, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_8, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 134, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
   }
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = PySequence_List(__pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 136, __pyx_L1_error)
+  __pyx_t_3 = PySequence_List(__pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 134, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_t_1 = ((PyObject*)__pyx_t_3);
   __pyx_t_3 = 0;
-  __pyx_t_9 = PyList_Sort(__pyx_t_1); if (unlikely(__pyx_t_9 == -1)) __PYX_ERR(0, 136, __pyx_L1_error)
+  __pyx_t_9 = PyList_Sort(__pyx_t_1); if (unlikely(__pyx_t_9 == -1)) __PYX_ERR(0, 134, __pyx_L1_error)
   __Pyx_GIVEREF(__pyx_t_1);
   __pyx_cur_scope->__pyx_v_nodes = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "nodetrie/nodetrie.pyx":138
+  /* "nodetrie/nodetrie.pyx":136
  *         cdef list nodes = sorted(self.search(self, query.split('.'), []))
  *         cdef Node node
  *         return (('.'.join(path), node,)             # <<<<<<<<<<<<<<
@@ -3172,14 +3151,14 @@ static PyObject *__pyx_pf_8nodetrie_8nodetrie_4Node_10query(struct __pyx_obj_8no
  * 
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_pf_8nodetrie_8nodetrie_4Node_5query_genexpr(((PyObject*)__pyx_cur_scope)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 138, __pyx_L1_error)
+  __pyx_t_1 = __pyx_pf_8nodetrie_8nodetrie_4Node_5query_genexpr(((PyObject*)__pyx_cur_scope)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 136, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "nodetrie/nodetrie.pyx":134
- *         cnode.insert_paths(self._node, paths)
+  /* "nodetrie/nodetrie.pyx":132
+ *         free(paths)
  * 
  *     def query(self, query):             # <<<<<<<<<<<<<<
  *         """Return nodes matching Graphite glob pattern query"""
@@ -3204,7 +3183,7 @@ static PyObject *__pyx_pf_8nodetrie_8nodetrie_4Node_10query(struct __pyx_obj_8no
   return __pyx_r;
 }
 
-/* "nodetrie/nodetrie.pyx":141
+/* "nodetrie/nodetrie.pyx":139
  *                 for path, node in nodes)
  * 
  *     cdef list _get_matched_children(self, sub_query, Node node):             # <<<<<<<<<<<<<<
@@ -3225,20 +3204,20 @@ static PyObject *__pyx_f_8nodetrie_8nodetrie_4Node__get_matched_children(struct 
   PyObject *__pyx_t_7 = NULL;
   __Pyx_RefNannySetupContext("_get_matched_children", 0);
 
-  /* "nodetrie/nodetrie.pyx":142
+  /* "nodetrie/nodetrie.pyx":140
  * 
  *     cdef list _get_matched_children(self, sub_query, Node node):
  *         if self.is_pattern(sub_query):             # <<<<<<<<<<<<<<
  *             return graphite_functions.match_entries(node, sub_query)
  *         cdef Node _node
  */
-  __pyx_t_1 = ((struct __pyx_vtabstruct_8nodetrie_8nodetrie_Node *)__pyx_v_self->__pyx_vtab)->is_pattern(__pyx_v_self, __pyx_v_sub_query, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 142, __pyx_L1_error)
+  __pyx_t_1 = ((struct __pyx_vtabstruct_8nodetrie_8nodetrie_Node *)__pyx_v_self->__pyx_vtab)->is_pattern(__pyx_v_self, __pyx_v_sub_query, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 140, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 142, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 140, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   if (__pyx_t_2) {
 
-    /* "nodetrie/nodetrie.pyx":143
+    /* "nodetrie/nodetrie.pyx":141
  *     cdef list _get_matched_children(self, sub_query, Node node):
  *         if self.is_pattern(sub_query):
  *             return graphite_functions.match_entries(node, sub_query)             # <<<<<<<<<<<<<<
@@ -3246,14 +3225,14 @@ static PyObject *__pyx_f_8nodetrie_8nodetrie_4Node__get_matched_children(struct 
  *         return [_node for _node in node.children
  */
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_1 = __pyx_f_8nodetrie_18graphite_functions_match_entries(((PyObject *)__pyx_v_node), __pyx_v_sub_query); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 143, __pyx_L1_error)
+    __pyx_t_1 = __pyx_f_8nodetrie_18graphite_functions_match_entries(((PyObject *)__pyx_v_node), __pyx_v_sub_query); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 141, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    if (!(likely(PyList_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 143, __pyx_L1_error)
+    if (!(likely(PyList_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 141, __pyx_L1_error)
     __pyx_r = ((PyObject*)__pyx_t_1);
     __pyx_t_1 = 0;
     goto __pyx_L0;
 
-    /* "nodetrie/nodetrie.pyx":142
+    /* "nodetrie/nodetrie.pyx":140
  * 
  *     cdef list _get_matched_children(self, sub_query, Node node):
  *         if self.is_pattern(sub_query):             # <<<<<<<<<<<<<<
@@ -3262,7 +3241,7 @@ static PyObject *__pyx_f_8nodetrie_8nodetrie_4Node__get_matched_children(struct 
  */
   }
 
-  /* "nodetrie/nodetrie.pyx":145
+  /* "nodetrie/nodetrie.pyx":143
  *             return graphite_functions.match_entries(node, sub_query)
  *         cdef Node _node
  *         return [_node for _node in node.children             # <<<<<<<<<<<<<<
@@ -3270,17 +3249,17 @@ static PyObject *__pyx_f_8nodetrie_8nodetrie_4Node__get_matched_children(struct 
  * 
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 145, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 143, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_node), __pyx_n_s_children); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 145, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_node), __pyx_n_s_children); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 143, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   if (likely(PyList_CheckExact(__pyx_t_3)) || PyTuple_CheckExact(__pyx_t_3)) {
     __pyx_t_4 = __pyx_t_3; __Pyx_INCREF(__pyx_t_4); __pyx_t_5 = 0;
     __pyx_t_6 = NULL;
   } else {
-    __pyx_t_5 = -1; __pyx_t_4 = PyObject_GetIter(__pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 145, __pyx_L1_error)
+    __pyx_t_5 = -1; __pyx_t_4 = PyObject_GetIter(__pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 143, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_6 = Py_TYPE(__pyx_t_4)->tp_iternext; if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 145, __pyx_L1_error)
+    __pyx_t_6 = Py_TYPE(__pyx_t_4)->tp_iternext; if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 143, __pyx_L1_error)
   }
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   for (;;) {
@@ -3288,17 +3267,17 @@ static PyObject *__pyx_f_8nodetrie_8nodetrie_4Node__get_matched_children(struct 
       if (likely(PyList_CheckExact(__pyx_t_4))) {
         if (__pyx_t_5 >= PyList_GET_SIZE(__pyx_t_4)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_3 = PyList_GET_ITEM(__pyx_t_4, __pyx_t_5); __Pyx_INCREF(__pyx_t_3); __pyx_t_5++; if (unlikely(0 < 0)) __PYX_ERR(0, 145, __pyx_L1_error)
+        __pyx_t_3 = PyList_GET_ITEM(__pyx_t_4, __pyx_t_5); __Pyx_INCREF(__pyx_t_3); __pyx_t_5++; if (unlikely(0 < 0)) __PYX_ERR(0, 143, __pyx_L1_error)
         #else
-        __pyx_t_3 = PySequence_ITEM(__pyx_t_4, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 145, __pyx_L1_error)
+        __pyx_t_3 = PySequence_ITEM(__pyx_t_4, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 143, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         #endif
       } else {
         if (__pyx_t_5 >= PyTuple_GET_SIZE(__pyx_t_4)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_3 = PyTuple_GET_ITEM(__pyx_t_4, __pyx_t_5); __Pyx_INCREF(__pyx_t_3); __pyx_t_5++; if (unlikely(0 < 0)) __PYX_ERR(0, 145, __pyx_L1_error)
+        __pyx_t_3 = PyTuple_GET_ITEM(__pyx_t_4, __pyx_t_5); __Pyx_INCREF(__pyx_t_3); __pyx_t_5++; if (unlikely(0 < 0)) __PYX_ERR(0, 143, __pyx_L1_error)
         #else
-        __pyx_t_3 = PySequence_ITEM(__pyx_t_4, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 145, __pyx_L1_error)
+        __pyx_t_3 = PySequence_ITEM(__pyx_t_4, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 143, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         #endif
       }
@@ -3308,41 +3287,41 @@ static PyObject *__pyx_f_8nodetrie_8nodetrie_4Node__get_matched_children(struct 
         PyObject* exc_type = PyErr_Occurred();
         if (exc_type) {
           if (likely(exc_type == PyExc_StopIteration || PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-          else __PYX_ERR(0, 145, __pyx_L1_error)
+          else __PYX_ERR(0, 143, __pyx_L1_error)
         }
         break;
       }
       __Pyx_GOTREF(__pyx_t_3);
     }
-    if (!(likely(((__pyx_t_3) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_3, __pyx_ptype_8nodetrie_8nodetrie_Node))))) __PYX_ERR(0, 145, __pyx_L1_error)
+    if (!(likely(((__pyx_t_3) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_3, __pyx_ptype_8nodetrie_8nodetrie_Node))))) __PYX_ERR(0, 143, __pyx_L1_error)
     __Pyx_XDECREF_SET(__pyx_v__node, ((struct __pyx_obj_8nodetrie_8nodetrie_Node *)__pyx_t_3));
     __pyx_t_3 = 0;
 
-    /* "nodetrie/nodetrie.pyx":146
+    /* "nodetrie/nodetrie.pyx":144
  *         cdef Node _node
  *         return [_node for _node in node.children
  *                 if _node.name == sub_query]             # <<<<<<<<<<<<<<
  * 
  *     def search(self, Node node, list split_query, list split_path):
  */
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v__node), __pyx_n_s_name); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 146, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v__node), __pyx_n_s_name); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 144, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_7 = PyObject_RichCompare(__pyx_t_3, __pyx_v_sub_query, Py_EQ); __Pyx_XGOTREF(__pyx_t_7); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 146, __pyx_L1_error)
+    __pyx_t_7 = PyObject_RichCompare(__pyx_t_3, __pyx_v_sub_query, Py_EQ); __Pyx_XGOTREF(__pyx_t_7); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 144, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_7); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 146, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_7); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 144, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     if (__pyx_t_2) {
 
-      /* "nodetrie/nodetrie.pyx":145
+      /* "nodetrie/nodetrie.pyx":143
  *             return graphite_functions.match_entries(node, sub_query)
  *         cdef Node _node
  *         return [_node for _node in node.children             # <<<<<<<<<<<<<<
  *                 if _node.name == sub_query]
  * 
  */
-      if (unlikely(__Pyx_ListComp_Append(__pyx_t_1, (PyObject*)__pyx_v__node))) __PYX_ERR(0, 145, __pyx_L1_error)
+      if (unlikely(__Pyx_ListComp_Append(__pyx_t_1, (PyObject*)__pyx_v__node))) __PYX_ERR(0, 143, __pyx_L1_error)
 
-      /* "nodetrie/nodetrie.pyx":146
+      /* "nodetrie/nodetrie.pyx":144
  *         cdef Node _node
  *         return [_node for _node in node.children
  *                 if _node.name == sub_query]             # <<<<<<<<<<<<<<
@@ -3351,7 +3330,7 @@ static PyObject *__pyx_f_8nodetrie_8nodetrie_4Node__get_matched_children(struct 
  */
     }
 
-    /* "nodetrie/nodetrie.pyx":145
+    /* "nodetrie/nodetrie.pyx":143
  *             return graphite_functions.match_entries(node, sub_query)
  *         cdef Node _node
  *         return [_node for _node in node.children             # <<<<<<<<<<<<<<
@@ -3364,7 +3343,7 @@ static PyObject *__pyx_f_8nodetrie_8nodetrie_4Node__get_matched_children(struct 
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "nodetrie/nodetrie.pyx":141
+  /* "nodetrie/nodetrie.pyx":139
  *                 for path, node in nodes)
  * 
  *     cdef list _get_matched_children(self, sub_query, Node node):             # <<<<<<<<<<<<<<
@@ -3388,7 +3367,7 @@ static PyObject *__pyx_f_8nodetrie_8nodetrie_4Node__get_matched_children(struct 
 }
 static PyObject *__pyx_gb_8nodetrie_8nodetrie_4Node_14generator(__pyx_CoroutineObject *__pyx_generator, PyObject *__pyx_sent_value); /* proto */
 
-/* "nodetrie/nodetrie.pyx":148
+/* "nodetrie/nodetrie.pyx":146
  *                 if _node.name == sub_query]
  * 
  *     def search(self, Node node, list split_query, list split_path):             # <<<<<<<<<<<<<<
@@ -3427,16 +3406,16 @@ static PyObject *__pyx_pw_8nodetrie_8nodetrie_4Node_13search(PyObject *__pyx_v_s
         case  1:
         if (likely((values[1] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_split_query)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("search", 1, 3, 3, 1); __PYX_ERR(0, 148, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("search", 1, 3, 3, 1); __PYX_ERR(0, 146, __pyx_L3_error)
         }
         case  2:
         if (likely((values[2] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_split_path)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("search", 1, 3, 3, 2); __PYX_ERR(0, 148, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("search", 1, 3, 3, 2); __PYX_ERR(0, 146, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "search") < 0)) __PYX_ERR(0, 148, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "search") < 0)) __PYX_ERR(0, 146, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 3) {
       goto __pyx_L5_argtuple_error;
@@ -3451,15 +3430,15 @@ static PyObject *__pyx_pw_8nodetrie_8nodetrie_4Node_13search(PyObject *__pyx_v_s
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("search", 1, 3, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 148, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("search", 1, 3, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 146, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("nodetrie.nodetrie.Node.search", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_node), __pyx_ptype_8nodetrie_8nodetrie_Node, 1, "node", 0))) __PYX_ERR(0, 148, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_split_query), (&PyList_Type), 1, "split_query", 1))) __PYX_ERR(0, 148, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_split_path), (&PyList_Type), 1, "split_path", 1))) __PYX_ERR(0, 148, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_node), __pyx_ptype_8nodetrie_8nodetrie_Node, 1, "node", 0))) __PYX_ERR(0, 146, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_split_query), (&PyList_Type), 1, "split_query", 1))) __PYX_ERR(0, 146, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_split_path), (&PyList_Type), 1, "split_path", 1))) __PYX_ERR(0, 146, __pyx_L1_error)
   __pyx_r = __pyx_pf_8nodetrie_8nodetrie_4Node_12search(((struct __pyx_obj_8nodetrie_8nodetrie_Node *)__pyx_v_self), __pyx_v_node, __pyx_v_split_query, __pyx_v_split_path);
 
   /* function exit code */
@@ -3480,7 +3459,7 @@ static PyObject *__pyx_pf_8nodetrie_8nodetrie_4Node_12search(struct __pyx_obj_8n
   if (unlikely(!__pyx_cur_scope)) {
     __pyx_cur_scope = ((struct __pyx_obj_8nodetrie_8nodetrie___pyx_scope_struct_2_search *)Py_None);
     __Pyx_INCREF(Py_None);
-    __PYX_ERR(0, 148, __pyx_L1_error)
+    __PYX_ERR(0, 146, __pyx_L1_error)
   } else {
     __Pyx_GOTREF(__pyx_cur_scope);
   }
@@ -3497,7 +3476,7 @@ static PyObject *__pyx_pf_8nodetrie_8nodetrie_4Node_12search(struct __pyx_obj_8n
   __Pyx_INCREF(__pyx_cur_scope->__pyx_v_split_path);
   __Pyx_GIVEREF(__pyx_cur_scope->__pyx_v_split_path);
   {
-    __pyx_CoroutineObject *gen = __Pyx_Generator_New((__pyx_coroutine_body_t) __pyx_gb_8nodetrie_8nodetrie_4Node_14generator, (PyObject *) __pyx_cur_scope, __pyx_n_s_search, __pyx_n_s_Node_search, __pyx_n_s_nodetrie_nodetrie); if (unlikely(!gen)) __PYX_ERR(0, 148, __pyx_L1_error)
+    __pyx_CoroutineObject *gen = __Pyx_Generator_New((__pyx_coroutine_body_t) __pyx_gb_8nodetrie_8nodetrie_4Node_14generator, (PyObject *) __pyx_cur_scope, __pyx_n_s_search, __pyx_n_s_Node_search, __pyx_n_s_nodetrie_nodetrie); if (unlikely(!gen)) __PYX_ERR(0, 146, __pyx_L1_error)
     __Pyx_DECREF(__pyx_cur_scope);
     __Pyx_RefNannyFinishContext();
     return (PyObject *) gen;
@@ -3539,9 +3518,9 @@ static PyObject *__pyx_gb_8nodetrie_8nodetrie_4Node_14generator(__pyx_CoroutineO
     return NULL;
   }
   __pyx_L3_first_run:;
-  if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 148, __pyx_L1_error)
+  if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 146, __pyx_L1_error)
 
-  /* "nodetrie/nodetrie.pyx":151
+  /* "nodetrie/nodetrie.pyx":149
  *         """Return matching children for each query part in split query starting
  *         from given node"""
  *         sub_query = split_query[0]             # <<<<<<<<<<<<<<
@@ -3550,28 +3529,28 @@ static PyObject *__pyx_gb_8nodetrie_8nodetrie_4Node_14generator(__pyx_CoroutineO
  */
   if (unlikely(__pyx_cur_scope->__pyx_v_split_query == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-    __PYX_ERR(0, 151, __pyx_L1_error)
+    __PYX_ERR(0, 149, __pyx_L1_error)
   }
-  __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_cur_scope->__pyx_v_split_query, 0, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 151, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_cur_scope->__pyx_v_split_query, 0, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 149, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_1);
   __pyx_cur_scope->__pyx_v_sub_query = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "nodetrie/nodetrie.pyx":152
+  /* "nodetrie/nodetrie.pyx":150
  *         from given node"""
  *         sub_query = split_query[0]
  *         matched_children = self._get_matched_children(sub_query, node)             # <<<<<<<<<<<<<<
  *         cdef Node child_node
  *         cdef list child_path
  */
-  __pyx_t_1 = ((struct __pyx_vtabstruct_8nodetrie_8nodetrie_Node *)__pyx_cur_scope->__pyx_v_self->__pyx_vtab)->_get_matched_children(__pyx_cur_scope->__pyx_v_self, __pyx_cur_scope->__pyx_v_sub_query, __pyx_cur_scope->__pyx_v_node); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 152, __pyx_L1_error)
+  __pyx_t_1 = ((struct __pyx_vtabstruct_8nodetrie_8nodetrie_Node *)__pyx_cur_scope->__pyx_v_self->__pyx_vtab)->_get_matched_children(__pyx_cur_scope->__pyx_v_self, __pyx_cur_scope->__pyx_v_sub_query, __pyx_cur_scope->__pyx_v_node); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 150, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_1);
   __pyx_cur_scope->__pyx_v_matched_children = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "nodetrie/nodetrie.pyx":156
+  /* "nodetrie/nodetrie.pyx":154
  *         cdef list child_path
  *         cdef list child_query
  *         for child_node in matched_children:             # <<<<<<<<<<<<<<
@@ -3580,24 +3559,24 @@ static PyObject *__pyx_gb_8nodetrie_8nodetrie_4Node_14generator(__pyx_CoroutineO
  */
   if (unlikely(__pyx_cur_scope->__pyx_v_matched_children == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not iterable");
-    __PYX_ERR(0, 156, __pyx_L1_error)
+    __PYX_ERR(0, 154, __pyx_L1_error)
   }
   __pyx_t_1 = __pyx_cur_scope->__pyx_v_matched_children; __Pyx_INCREF(__pyx_t_1); __pyx_t_2 = 0;
   for (;;) {
     if (__pyx_t_2 >= PyList_GET_SIZE(__pyx_t_1)) break;
     #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-    __pyx_t_3 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_2); __Pyx_INCREF(__pyx_t_3); __pyx_t_2++; if (unlikely(0 < 0)) __PYX_ERR(0, 156, __pyx_L1_error)
+    __pyx_t_3 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_2); __Pyx_INCREF(__pyx_t_3); __pyx_t_2++; if (unlikely(0 < 0)) __PYX_ERR(0, 154, __pyx_L1_error)
     #else
-    __pyx_t_3 = PySequence_ITEM(__pyx_t_1, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 156, __pyx_L1_error)
+    __pyx_t_3 = PySequence_ITEM(__pyx_t_1, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 154, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     #endif
-    if (!(likely(((__pyx_t_3) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_3, __pyx_ptype_8nodetrie_8nodetrie_Node))))) __PYX_ERR(0, 156, __pyx_L1_error)
+    if (!(likely(((__pyx_t_3) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_3, __pyx_ptype_8nodetrie_8nodetrie_Node))))) __PYX_ERR(0, 154, __pyx_L1_error)
     __Pyx_XGOTREF(((PyObject *)__pyx_cur_scope->__pyx_v_child_node));
     __Pyx_XDECREF_SET(__pyx_cur_scope->__pyx_v_child_node, ((struct __pyx_obj_8nodetrie_8nodetrie_Node *)__pyx_t_3));
     __Pyx_GIVEREF(__pyx_t_3);
     __pyx_t_3 = 0;
 
-    /* "nodetrie/nodetrie.pyx":157
+    /* "nodetrie/nodetrie.pyx":155
  *         cdef list child_query
  *         for child_node in matched_children:
  *             child_path = split_path[:]             # <<<<<<<<<<<<<<
@@ -3606,28 +3585,28 @@ static PyObject *__pyx_gb_8nodetrie_8nodetrie_4Node_14generator(__pyx_CoroutineO
  */
     if (unlikely(__pyx_cur_scope->__pyx_v_split_path == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 157, __pyx_L1_error)
+      __PYX_ERR(0, 155, __pyx_L1_error)
     }
-    __pyx_t_3 = __Pyx_PyList_GetSlice(__pyx_cur_scope->__pyx_v_split_path, 0, PY_SSIZE_T_MAX); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 157, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyList_GetSlice(__pyx_cur_scope->__pyx_v_split_path, 0, PY_SSIZE_T_MAX); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 155, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_XGOTREF(__pyx_cur_scope->__pyx_v_child_path);
     __Pyx_XDECREF_SET(__pyx_cur_scope->__pyx_v_child_path, ((PyObject*)__pyx_t_3));
     __Pyx_GIVEREF(__pyx_t_3);
     __pyx_t_3 = 0;
 
-    /* "nodetrie/nodetrie.pyx":158
+    /* "nodetrie/nodetrie.pyx":156
  *         for child_node in matched_children:
  *             child_path = split_path[:]
  *             child_path.append(child_node.name)             # <<<<<<<<<<<<<<
  *             child_query = split_query[1:]
  *             if len(child_query) > 0:
  */
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_cur_scope->__pyx_v_child_node), __pyx_n_s_name); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 158, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_cur_scope->__pyx_v_child_node), __pyx_n_s_name); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 156, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_4 = __Pyx_PyList_Append(__pyx_cur_scope->__pyx_v_child_path, __pyx_t_3); if (unlikely(__pyx_t_4 == -1)) __PYX_ERR(0, 158, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyList_Append(__pyx_cur_scope->__pyx_v_child_path, __pyx_t_3); if (unlikely(__pyx_t_4 == -1)) __PYX_ERR(0, 156, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-    /* "nodetrie/nodetrie.pyx":159
+    /* "nodetrie/nodetrie.pyx":157
  *             child_path = split_path[:]
  *             child_path.append(child_node.name)
  *             child_query = split_query[1:]             # <<<<<<<<<<<<<<
@@ -3636,34 +3615,34 @@ static PyObject *__pyx_gb_8nodetrie_8nodetrie_4Node_14generator(__pyx_CoroutineO
  */
     if (unlikely(__pyx_cur_scope->__pyx_v_split_query == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 159, __pyx_L1_error)
+      __PYX_ERR(0, 157, __pyx_L1_error)
     }
-    __pyx_t_3 = __Pyx_PyList_GetSlice(__pyx_cur_scope->__pyx_v_split_query, 1, PY_SSIZE_T_MAX); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 159, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyList_GetSlice(__pyx_cur_scope->__pyx_v_split_query, 1, PY_SSIZE_T_MAX); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 157, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_XGOTREF(__pyx_cur_scope->__pyx_v_child_query);
     __Pyx_XDECREF_SET(__pyx_cur_scope->__pyx_v_child_query, ((PyObject*)__pyx_t_3));
     __Pyx_GIVEREF(__pyx_t_3);
     __pyx_t_3 = 0;
 
-    /* "nodetrie/nodetrie.pyx":160
+    /* "nodetrie/nodetrie.pyx":158
  *             child_path.append(child_node.name)
  *             child_query = split_query[1:]
  *             if len(child_query) > 0:             # <<<<<<<<<<<<<<
  *                 for sub in self.search(child_node, child_query, child_path):
  *                     yield sub
  */
-    __pyx_t_5 = PyList_GET_SIZE(__pyx_cur_scope->__pyx_v_child_query); if (unlikely(__pyx_t_5 == -1)) __PYX_ERR(0, 160, __pyx_L1_error)
+    __pyx_t_5 = PyList_GET_SIZE(__pyx_cur_scope->__pyx_v_child_query); if (unlikely(__pyx_t_5 == -1)) __PYX_ERR(0, 158, __pyx_L1_error)
     __pyx_t_6 = ((__pyx_t_5 > 0) != 0);
     if (__pyx_t_6) {
 
-      /* "nodetrie/nodetrie.pyx":161
+      /* "nodetrie/nodetrie.pyx":159
  *             child_query = split_query[1:]
  *             if len(child_query) > 0:
  *                 for sub in self.search(child_node, child_query, child_path):             # <<<<<<<<<<<<<<
  *                     yield sub
  *             else:
  */
-      __pyx_t_7 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_cur_scope->__pyx_v_self), __pyx_n_s_search); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 161, __pyx_L1_error)
+      __pyx_t_7 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_cur_scope->__pyx_v_self), __pyx_n_s_search); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 159, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
       __pyx_t_8 = NULL;
       __pyx_t_9 = 0;
@@ -3680,7 +3659,7 @@ static PyObject *__pyx_gb_8nodetrie_8nodetrie_4Node_14generator(__pyx_CoroutineO
       #if CYTHON_FAST_PYCALL
       if (PyFunction_Check(__pyx_t_7)) {
         PyObject *__pyx_temp[4] = {__pyx_t_8, ((PyObject *)__pyx_cur_scope->__pyx_v_child_node), __pyx_cur_scope->__pyx_v_child_query, __pyx_cur_scope->__pyx_v_child_path};
-        __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_9, 3+__pyx_t_9); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 161, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_9, 3+__pyx_t_9); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 159, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
         __Pyx_GOTREF(__pyx_t_3);
       } else
@@ -3688,13 +3667,13 @@ static PyObject *__pyx_gb_8nodetrie_8nodetrie_4Node_14generator(__pyx_CoroutineO
       #if CYTHON_FAST_PYCCALL
       if (__Pyx_PyFastCFunction_Check(__pyx_t_7)) {
         PyObject *__pyx_temp[4] = {__pyx_t_8, ((PyObject *)__pyx_cur_scope->__pyx_v_child_node), __pyx_cur_scope->__pyx_v_child_query, __pyx_cur_scope->__pyx_v_child_path};
-        __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_9, 3+__pyx_t_9); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 161, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_9, 3+__pyx_t_9); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 159, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
         __Pyx_GOTREF(__pyx_t_3);
       } else
       #endif
       {
-        __pyx_t_10 = PyTuple_New(3+__pyx_t_9); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 161, __pyx_L1_error)
+        __pyx_t_10 = PyTuple_New(3+__pyx_t_9); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 159, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_10);
         if (__pyx_t_8) {
           __Pyx_GIVEREF(__pyx_t_8); PyTuple_SET_ITEM(__pyx_t_10, 0, __pyx_t_8); __pyx_t_8 = NULL;
@@ -3708,7 +3687,7 @@ static PyObject *__pyx_gb_8nodetrie_8nodetrie_4Node_14generator(__pyx_CoroutineO
         __Pyx_INCREF(__pyx_cur_scope->__pyx_v_child_path);
         __Pyx_GIVEREF(__pyx_cur_scope->__pyx_v_child_path);
         PyTuple_SET_ITEM(__pyx_t_10, 2+__pyx_t_9, __pyx_cur_scope->__pyx_v_child_path);
-        __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_t_10, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 161, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_t_10, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 159, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
       }
@@ -3717,9 +3696,9 @@ static PyObject *__pyx_gb_8nodetrie_8nodetrie_4Node_14generator(__pyx_CoroutineO
         __pyx_t_7 = __pyx_t_3; __Pyx_INCREF(__pyx_t_7); __pyx_t_5 = 0;
         __pyx_t_11 = NULL;
       } else {
-        __pyx_t_5 = -1; __pyx_t_7 = PyObject_GetIter(__pyx_t_3); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 161, __pyx_L1_error)
+        __pyx_t_5 = -1; __pyx_t_7 = PyObject_GetIter(__pyx_t_3); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 159, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_7);
-        __pyx_t_11 = Py_TYPE(__pyx_t_7)->tp_iternext; if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 161, __pyx_L1_error)
+        __pyx_t_11 = Py_TYPE(__pyx_t_7)->tp_iternext; if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 159, __pyx_L1_error)
       }
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       for (;;) {
@@ -3727,17 +3706,17 @@ static PyObject *__pyx_gb_8nodetrie_8nodetrie_4Node_14generator(__pyx_CoroutineO
           if (likely(PyList_CheckExact(__pyx_t_7))) {
             if (__pyx_t_5 >= PyList_GET_SIZE(__pyx_t_7)) break;
             #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-            __pyx_t_3 = PyList_GET_ITEM(__pyx_t_7, __pyx_t_5); __Pyx_INCREF(__pyx_t_3); __pyx_t_5++; if (unlikely(0 < 0)) __PYX_ERR(0, 161, __pyx_L1_error)
+            __pyx_t_3 = PyList_GET_ITEM(__pyx_t_7, __pyx_t_5); __Pyx_INCREF(__pyx_t_3); __pyx_t_5++; if (unlikely(0 < 0)) __PYX_ERR(0, 159, __pyx_L1_error)
             #else
-            __pyx_t_3 = PySequence_ITEM(__pyx_t_7, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 161, __pyx_L1_error)
+            __pyx_t_3 = PySequence_ITEM(__pyx_t_7, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 159, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_3);
             #endif
           } else {
             if (__pyx_t_5 >= PyTuple_GET_SIZE(__pyx_t_7)) break;
             #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-            __pyx_t_3 = PyTuple_GET_ITEM(__pyx_t_7, __pyx_t_5); __Pyx_INCREF(__pyx_t_3); __pyx_t_5++; if (unlikely(0 < 0)) __PYX_ERR(0, 161, __pyx_L1_error)
+            __pyx_t_3 = PyTuple_GET_ITEM(__pyx_t_7, __pyx_t_5); __Pyx_INCREF(__pyx_t_3); __pyx_t_5++; if (unlikely(0 < 0)) __PYX_ERR(0, 159, __pyx_L1_error)
             #else
-            __pyx_t_3 = PySequence_ITEM(__pyx_t_7, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 161, __pyx_L1_error)
+            __pyx_t_3 = PySequence_ITEM(__pyx_t_7, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 159, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_3);
             #endif
           }
@@ -3747,7 +3726,7 @@ static PyObject *__pyx_gb_8nodetrie_8nodetrie_4Node_14generator(__pyx_CoroutineO
             PyObject* exc_type = PyErr_Occurred();
             if (exc_type) {
               if (likely(exc_type == PyExc_StopIteration || PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-              else __PYX_ERR(0, 161, __pyx_L1_error)
+              else __PYX_ERR(0, 159, __pyx_L1_error)
             }
             break;
           }
@@ -3758,7 +3737,7 @@ static PyObject *__pyx_gb_8nodetrie_8nodetrie_4Node_14generator(__pyx_CoroutineO
         __Pyx_GIVEREF(__pyx_t_3);
         __pyx_t_3 = 0;
 
-        /* "nodetrie/nodetrie.pyx":162
+        /* "nodetrie/nodetrie.pyx":160
  *             if len(child_query) > 0:
  *                 for sub in self.search(child_node, child_query, child_path):
  *                     yield sub             # <<<<<<<<<<<<<<
@@ -3789,9 +3768,9 @@ static PyObject *__pyx_gb_8nodetrie_8nodetrie_4Node_14generator(__pyx_CoroutineO
         __pyx_cur_scope->__pyx_t_3 = 0;
         __Pyx_XGOTREF(__pyx_t_7);
         __pyx_t_11 = __pyx_cur_scope->__pyx_t_4;
-        if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 162, __pyx_L1_error)
+        if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 160, __pyx_L1_error)
 
-        /* "nodetrie/nodetrie.pyx":161
+        /* "nodetrie/nodetrie.pyx":159
  *             child_query = split_query[1:]
  *             if len(child_query) > 0:
  *                 for sub in self.search(child_node, child_query, child_path):             # <<<<<<<<<<<<<<
@@ -3801,7 +3780,7 @@ static PyObject *__pyx_gb_8nodetrie_8nodetrie_4Node_14generator(__pyx_CoroutineO
       }
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-      /* "nodetrie/nodetrie.pyx":160
+      /* "nodetrie/nodetrie.pyx":158
  *             child_path.append(child_node.name)
  *             child_query = split_query[1:]
  *             if len(child_query) > 0:             # <<<<<<<<<<<<<<
@@ -3811,7 +3790,7 @@ static PyObject *__pyx_gb_8nodetrie_8nodetrie_4Node_14generator(__pyx_CoroutineO
       goto __pyx_L6;
     }
 
-    /* "nodetrie/nodetrie.pyx":164
+    /* "nodetrie/nodetrie.pyx":162
  *                     yield sub
  *             else:
  *                 yield (child_path, child_node)             # <<<<<<<<<<<<<<
@@ -3819,7 +3798,7 @@ static PyObject *__pyx_gb_8nodetrie_8nodetrie_4Node_14generator(__pyx_CoroutineO
  *     cpdef is_pattern(self, pattern):
  */
     /*else*/ {
-      __pyx_t_7 = PyTuple_New(2); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 164, __pyx_L1_error)
+      __pyx_t_7 = PyTuple_New(2); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 162, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
       __Pyx_INCREF(__pyx_cur_scope->__pyx_v_child_path);
       __Pyx_GIVEREF(__pyx_cur_scope->__pyx_v_child_path);
@@ -3842,11 +3821,11 @@ static PyObject *__pyx_gb_8nodetrie_8nodetrie_4Node_14generator(__pyx_CoroutineO
       __pyx_cur_scope->__pyx_t_0 = 0;
       __Pyx_XGOTREF(__pyx_t_1);
       __pyx_t_2 = __pyx_cur_scope->__pyx_t_1;
-      if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 164, __pyx_L1_error)
+      if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 162, __pyx_L1_error)
     }
     __pyx_L6:;
 
-    /* "nodetrie/nodetrie.pyx":156
+    /* "nodetrie/nodetrie.pyx":154
  *         cdef list child_path
  *         cdef list child_query
  *         for child_node in matched_children:             # <<<<<<<<<<<<<<
@@ -3857,7 +3836,7 @@ static PyObject *__pyx_gb_8nodetrie_8nodetrie_4Node_14generator(__pyx_CoroutineO
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   CYTHON_MAYBE_UNUSED_VAR(__pyx_cur_scope);
 
-  /* "nodetrie/nodetrie.pyx":148
+  /* "nodetrie/nodetrie.pyx":146
  *                 if _node.name == sub_query]
  * 
  *     def search(self, Node node, list split_query, list split_path):             # <<<<<<<<<<<<<<
@@ -3883,7 +3862,7 @@ static PyObject *__pyx_gb_8nodetrie_8nodetrie_4Node_14generator(__pyx_CoroutineO
   return __pyx_r;
 }
 
-/* "nodetrie/nodetrie.pyx":166
+/* "nodetrie/nodetrie.pyx":164
  *                 yield (child_path, child_node)
  * 
  *     cpdef is_pattern(self, pattern):             # <<<<<<<<<<<<<<
@@ -3908,7 +3887,7 @@ static PyObject *__pyx_f_8nodetrie_8nodetrie_4Node_is_pattern(struct __pyx_obj_8
   if (unlikely(__pyx_skip_dispatch)) ;
   /* Check if overridden in Python */
   else if (unlikely(Py_TYPE(((PyObject *)__pyx_v_self))->tp_dictoffset != 0)) {
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_is_pattern); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 166, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_is_pattern); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 164, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)__pyx_pw_8nodetrie_8nodetrie_4Node_16is_pattern)) {
       __Pyx_XDECREF(__pyx_r);
@@ -3924,13 +3903,13 @@ static PyObject *__pyx_f_8nodetrie_8nodetrie_4Node_is_pattern(struct __pyx_obj_8
         }
       }
       if (!__pyx_t_4) {
-        __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_v_pattern); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 166, __pyx_L1_error)
+        __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_v_pattern); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 164, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
       } else {
         #if CYTHON_FAST_PYCALL
         if (PyFunction_Check(__pyx_t_3)) {
           PyObject *__pyx_temp[2] = {__pyx_t_4, __pyx_v_pattern};
-          __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 166, __pyx_L1_error)
+          __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 164, __pyx_L1_error)
           __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
           __Pyx_GOTREF(__pyx_t_2);
         } else
@@ -3938,19 +3917,19 @@ static PyObject *__pyx_f_8nodetrie_8nodetrie_4Node_is_pattern(struct __pyx_obj_8
         #if CYTHON_FAST_PYCCALL
         if (__Pyx_PyFastCFunction_Check(__pyx_t_3)) {
           PyObject *__pyx_temp[2] = {__pyx_t_4, __pyx_v_pattern};
-          __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 166, __pyx_L1_error)
+          __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 164, __pyx_L1_error)
           __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
           __Pyx_GOTREF(__pyx_t_2);
         } else
         #endif
         {
-          __pyx_t_5 = PyTuple_New(1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 166, __pyx_L1_error)
+          __pyx_t_5 = PyTuple_New(1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 164, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_5);
           __Pyx_GIVEREF(__pyx_t_4); PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_4); __pyx_t_4 = NULL;
           __Pyx_INCREF(__pyx_v_pattern);
           __Pyx_GIVEREF(__pyx_v_pattern);
           PyTuple_SET_ITEM(__pyx_t_5, 0+1, __pyx_v_pattern);
-          __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_5, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 166, __pyx_L1_error)
+          __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_5, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 164, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
           __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
         }
@@ -3964,29 +3943,29 @@ static PyObject *__pyx_f_8nodetrie_8nodetrie_4Node_is_pattern(struct __pyx_obj_8
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   }
 
-  /* "nodetrie/nodetrie.pyx":167
+  /* "nodetrie/nodetrie.pyx":165
  * 
  *     cpdef is_pattern(self, pattern):
  *         byte_str = _encode_bytes(pattern)             # <<<<<<<<<<<<<<
  *         cdef char* c_pattern = byte_str
  *         return self._is_pattern(c_pattern)
  */
-  __pyx_t_1 = __pyx_f_8nodetrie_8nodetrie__encode_bytes(__pyx_v_pattern); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 167, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_8nodetrie_8nodetrie__encode_bytes(__pyx_v_pattern); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 165, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_byte_str = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "nodetrie/nodetrie.pyx":168
+  /* "nodetrie/nodetrie.pyx":166
  *     cpdef is_pattern(self, pattern):
  *         byte_str = _encode_bytes(pattern)
  *         cdef char* c_pattern = byte_str             # <<<<<<<<<<<<<<
  *         return self._is_pattern(c_pattern)
  * 
  */
-  __pyx_t_6 = __Pyx_PyObject_AsString(__pyx_v_byte_str); if (unlikely((!__pyx_t_6) && PyErr_Occurred())) __PYX_ERR(0, 168, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_AsString(__pyx_v_byte_str); if (unlikely((!__pyx_t_6) && PyErr_Occurred())) __PYX_ERR(0, 166, __pyx_L1_error)
   __pyx_v_c_pattern = __pyx_t_6;
 
-  /* "nodetrie/nodetrie.pyx":169
+  /* "nodetrie/nodetrie.pyx":167
  *         byte_str = _encode_bytes(pattern)
  *         cdef char* c_pattern = byte_str
  *         return self._is_pattern(c_pattern)             # <<<<<<<<<<<<<<
@@ -3994,13 +3973,13 @@ static PyObject *__pyx_f_8nodetrie_8nodetrie_4Node_is_pattern(struct __pyx_obj_8
  *     cdef bint _is_pattern(self, char *pattern) nogil:
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyBool_FromLong(((struct __pyx_vtabstruct_8nodetrie_8nodetrie_Node *)__pyx_v_self->__pyx_vtab)->_is_pattern(__pyx_v_self, __pyx_v_c_pattern)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 169, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyBool_FromLong(((struct __pyx_vtabstruct_8nodetrie_8nodetrie_Node *)__pyx_v_self->__pyx_vtab)->_is_pattern(__pyx_v_self, __pyx_v_c_pattern)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 167, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "nodetrie/nodetrie.pyx":166
+  /* "nodetrie/nodetrie.pyx":164
  *                 yield (child_path, child_node)
  * 
  *     cpdef is_pattern(self, pattern):             # <<<<<<<<<<<<<<
@@ -4043,7 +4022,7 @@ static PyObject *__pyx_pf_8nodetrie_8nodetrie_4Node_15is_pattern(struct __pyx_ob
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("is_pattern", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_8nodetrie_8nodetrie_4Node_is_pattern(__pyx_v_self, __pyx_v_pattern, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 166, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_8nodetrie_8nodetrie_4Node_is_pattern(__pyx_v_self, __pyx_v_pattern, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 164, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -4060,7 +4039,7 @@ static PyObject *__pyx_pf_8nodetrie_8nodetrie_4Node_15is_pattern(struct __pyx_ob
   return __pyx_r;
 }
 
-/* "nodetrie/nodetrie.pyx":171
+/* "nodetrie/nodetrie.pyx":169
  *         return self._is_pattern(c_pattern)
  * 
  *     cdef bint _is_pattern(self, char *pattern) nogil:             # <<<<<<<<<<<<<<
@@ -4070,7 +4049,7 @@ static PyObject *__pyx_pf_8nodetrie_8nodetrie_4Node_15is_pattern(struct __pyx_ob
 static int __pyx_f_8nodetrie_8nodetrie_4Node__is_pattern(CYTHON_UNUSED struct __pyx_obj_8nodetrie_8nodetrie_Node *__pyx_v_self, char *__pyx_v_pattern) {
   int __pyx_r;
 
-  /* "nodetrie/nodetrie.pyx":172
+  /* "nodetrie/nodetrie.pyx":170
  * 
  *     cdef bint _is_pattern(self, char *pattern) nogil:
  *         return cnode.is_pattern(pattern)             # <<<<<<<<<<<<<<
@@ -4078,7 +4057,7 @@ static int __pyx_f_8nodetrie_8nodetrie_4Node__is_pattern(CYTHON_UNUSED struct __
   __pyx_r = is_pattern(__pyx_v_pattern);
   goto __pyx_L0;
 
-  /* "nodetrie/nodetrie.pyx":171
+  /* "nodetrie/nodetrie.pyx":169
  *         return self._is_pattern(c_pattern)
  * 
  *     cdef bint _is_pattern(self, char *pattern) nogil:             # <<<<<<<<<<<<<<
@@ -4678,8 +4657,8 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {0, 0, 0, 0, 0, 0, 0}
 };
 static int __Pyx_InitCachedBuiltins(void) {
-  __pyx_builtin_MemoryError = __Pyx_GetBuiltinName(__pyx_n_s_MemoryError); if (!__pyx_builtin_MemoryError) __PYX_ERR(0, 22, __pyx_L1_error)
-  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(0, 24, __pyx_L1_error)
+  __pyx_builtin_MemoryError = __Pyx_GetBuiltinName(__pyx_n_s_MemoryError); if (!__pyx_builtin_MemoryError) __PYX_ERR(0, 20, __pyx_L1_error)
+  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(0, 23, __pyx_L1_error)
   return 0;
   __pyx_L1_error:;
   return -1;
@@ -4689,14 +4668,14 @@ static int __Pyx_InitCachedConstants(void) {
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__Pyx_InitCachedConstants", 0);
 
-  /* "nodetrie/nodetrie.pyx":136
+  /* "nodetrie/nodetrie.pyx":134
  *     def query(self, query):
  *         """Return nodes matching Graphite glob pattern query"""
  *         cdef list nodes = sorted(self.search(self, query.split('.'), []))             # <<<<<<<<<<<<<<
  *         cdef Node node
  *         return (('.'.join(path), node,)
  */
-  __pyx_tuple__2 = PyTuple_Pack(1, __pyx_kp_s_); if (unlikely(!__pyx_tuple__2)) __PYX_ERR(0, 136, __pyx_L1_error)
+  __pyx_tuple__2 = PyTuple_Pack(1, __pyx_kp_s_); if (unlikely(!__pyx_tuple__2)) __PYX_ERR(0, 134, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__2);
   __Pyx_GIVEREF(__pyx_tuple__2);
   __Pyx_RefNannyFinishContext();
@@ -4808,28 +4787,21 @@ PyMODINIT_FUNC PyInit_nodetrie(void)
   __pyx_vtable_8nodetrie_8nodetrie_Node._get_matched_children = (PyObject *(*)(struct __pyx_obj_8nodetrie_8nodetrie_Node *, PyObject *, struct __pyx_obj_8nodetrie_8nodetrie_Node *))__pyx_f_8nodetrie_8nodetrie_4Node__get_matched_children;
   __pyx_vtable_8nodetrie_8nodetrie_Node.is_pattern = (PyObject *(*)(struct __pyx_obj_8nodetrie_8nodetrie_Node *, PyObject *, int __pyx_skip_dispatch))__pyx_f_8nodetrie_8nodetrie_4Node_is_pattern;
   __pyx_vtable_8nodetrie_8nodetrie_Node._is_pattern = (int (*)(struct __pyx_obj_8nodetrie_8nodetrie_Node *, char *))__pyx_f_8nodetrie_8nodetrie_4Node__is_pattern;
-  if (PyType_Ready(&__pyx_type_8nodetrie_8nodetrie_Node) < 0) __PYX_ERR(0, 38, __pyx_L1_error)
+  if (PyType_Ready(&__pyx_type_8nodetrie_8nodetrie_Node) < 0) __PYX_ERR(0, 36, __pyx_L1_error)
   __pyx_type_8nodetrie_8nodetrie_Node.tp_print = 0;
-  if (__Pyx_SetVtable(__pyx_type_8nodetrie_8nodetrie_Node.tp_dict, __pyx_vtabptr_8nodetrie_8nodetrie_Node) < 0) __PYX_ERR(0, 38, __pyx_L1_error)
-  if (PyObject_SetAttrString(__pyx_m, "Node", (PyObject *)&__pyx_type_8nodetrie_8nodetrie_Node) < 0) __PYX_ERR(0, 38, __pyx_L1_error)
+  if (__Pyx_SetVtable(__pyx_type_8nodetrie_8nodetrie_Node.tp_dict, __pyx_vtabptr_8nodetrie_8nodetrie_Node) < 0) __PYX_ERR(0, 36, __pyx_L1_error)
+  if (PyObject_SetAttrString(__pyx_m, "Node", (PyObject *)&__pyx_type_8nodetrie_8nodetrie_Node) < 0) __PYX_ERR(0, 36, __pyx_L1_error)
   __pyx_ptype_8nodetrie_8nodetrie_Node = &__pyx_type_8nodetrie_8nodetrie_Node;
-  if (PyType_Ready(&__pyx_type_8nodetrie_8nodetrie___pyx_scope_struct__query) < 0) __PYX_ERR(0, 134, __pyx_L1_error)
+  if (PyType_Ready(&__pyx_type_8nodetrie_8nodetrie___pyx_scope_struct__query) < 0) __PYX_ERR(0, 132, __pyx_L1_error)
   __pyx_type_8nodetrie_8nodetrie___pyx_scope_struct__query.tp_print = 0;
   __pyx_ptype_8nodetrie_8nodetrie___pyx_scope_struct__query = &__pyx_type_8nodetrie_8nodetrie___pyx_scope_struct__query;
-  if (PyType_Ready(&__pyx_type_8nodetrie_8nodetrie___pyx_scope_struct_1_genexpr) < 0) __PYX_ERR(0, 138, __pyx_L1_error)
+  if (PyType_Ready(&__pyx_type_8nodetrie_8nodetrie___pyx_scope_struct_1_genexpr) < 0) __PYX_ERR(0, 136, __pyx_L1_error)
   __pyx_type_8nodetrie_8nodetrie___pyx_scope_struct_1_genexpr.tp_print = 0;
   __pyx_ptype_8nodetrie_8nodetrie___pyx_scope_struct_1_genexpr = &__pyx_type_8nodetrie_8nodetrie___pyx_scope_struct_1_genexpr;
-  if (PyType_Ready(&__pyx_type_8nodetrie_8nodetrie___pyx_scope_struct_2_search) < 0) __PYX_ERR(0, 148, __pyx_L1_error)
+  if (PyType_Ready(&__pyx_type_8nodetrie_8nodetrie___pyx_scope_struct_2_search) < 0) __PYX_ERR(0, 146, __pyx_L1_error)
   __pyx_type_8nodetrie_8nodetrie___pyx_scope_struct_2_search.tp_print = 0;
   __pyx_ptype_8nodetrie_8nodetrie___pyx_scope_struct_2_search = &__pyx_type_8nodetrie_8nodetrie___pyx_scope_struct_2_search;
   /*--- Type import code ---*/
-  __pyx_ptype_7cpython_4type_type = __Pyx_ImportType(__Pyx_BUILTIN_MODULE_NAME, "type", 
-  #if CYTHON_COMPILING_IN_PYPY
-  sizeof(PyTypeObject),
-  #else
-  sizeof(PyHeapTypeObject),
-  #endif
-  0); if (unlikely(!__pyx_ptype_7cpython_4type_type)) __PYX_ERR(1, 9, __pyx_L1_error)
   /*--- Variable import code ---*/
   /*--- Function import code ---*/
   __pyx_t_1 = __Pyx_ImportModule("nodetrie.graphite_functions"); if (!__pyx_t_1) __PYX_ERR(0, 1, __pyx_L1_error)
@@ -4840,7 +4812,7 @@ PyMODINIT_FUNC PyInit_nodetrie(void)
   if (__Pyx_patch_abc() < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   #endif
 
-  /* "nodetrie/nodetrie.pyx":7
+  /* "nodetrie/nodetrie.pyx":6
  * cimport cnode
  * 
  * cdef str ENCODING='utf-8'             # <<<<<<<<<<<<<<
@@ -4854,8 +4826,8 @@ PyMODINIT_FUNC PyInit_nodetrie(void)
 
   /* "nodetrie/nodetrie.pyx":1
  * from libc.stdlib cimport malloc, free             # <<<<<<<<<<<<<<
- * from cpython.string cimport PyString_AsString
  * from cpython.version cimport PY_MAJOR_VERSION
+ * cimport graphite_functions
  */
   __pyx_t_2 = PyDict_New(); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
@@ -5887,37 +5859,6 @@ bad:
         }\
         return (target_type) value;\
     }
-
-/* CIntToPy */
-    static CYTHON_INLINE PyObject* __Pyx_PyInt_From_unsigned_int(unsigned int value) {
-    const unsigned int neg_one = (unsigned int) -1, const_zero = (unsigned int) 0;
-    const int is_unsigned = neg_one > const_zero;
-    if (is_unsigned) {
-        if (sizeof(unsigned int) < sizeof(long)) {
-            return PyInt_FromLong((long) value);
-        } else if (sizeof(unsigned int) <= sizeof(unsigned long)) {
-            return PyLong_FromUnsignedLong((unsigned long) value);
-#ifdef HAVE_LONG_LONG
-        } else if (sizeof(unsigned int) <= sizeof(unsigned PY_LONG_LONG)) {
-            return PyLong_FromUnsignedLongLong((unsigned PY_LONG_LONG) value);
-#endif
-        }
-    } else {
-        if (sizeof(unsigned int) <= sizeof(long)) {
-            return PyInt_FromLong((long) value);
-#ifdef HAVE_LONG_LONG
-        } else if (sizeof(unsigned int) <= sizeof(PY_LONG_LONG)) {
-            return PyLong_FromLongLong((PY_LONG_LONG) value);
-#endif
-        }
-    }
-    {
-        int one = 1; int little = (int)*(unsigned char *)&one;
-        unsigned char *bytes = (unsigned char *)&value;
-        return _PyLong_FromByteArray(bytes, sizeof(unsigned int),
-                                     little, !is_unsigned);
-    }
-}
 
 /* CIntToPy */
     static CYTHON_INLINE PyObject* __Pyx_PyInt_From_long(long value) {
@@ -7574,71 +7515,6 @@ static PyObject *__Pyx_ImportModule(const char *name) {
 bad:
     Py_XDECREF(py_name);
     return 0;
-}
-#endif
-
-/* TypeImport */
-          #ifndef __PYX_HAVE_RT_ImportType
-#define __PYX_HAVE_RT_ImportType
-static PyTypeObject *__Pyx_ImportType(const char *module_name, const char *class_name,
-    size_t size, int strict)
-{
-    PyObject *py_module = 0;
-    PyObject *result = 0;
-    PyObject *py_name = 0;
-    char warning[200];
-    Py_ssize_t basicsize;
-#ifdef Py_LIMITED_API
-    PyObject *py_basicsize;
-#endif
-    py_module = __Pyx_ImportModule(module_name);
-    if (!py_module)
-        goto bad;
-    py_name = __Pyx_PyIdentifier_FromString(class_name);
-    if (!py_name)
-        goto bad;
-    result = PyObject_GetAttr(py_module, py_name);
-    Py_DECREF(py_name);
-    py_name = 0;
-    Py_DECREF(py_module);
-    py_module = 0;
-    if (!result)
-        goto bad;
-    if (!PyType_Check(result)) {
-        PyErr_Format(PyExc_TypeError,
-            "%.200s.%.200s is not a type object",
-            module_name, class_name);
-        goto bad;
-    }
-#ifndef Py_LIMITED_API
-    basicsize = ((PyTypeObject *)result)->tp_basicsize;
-#else
-    py_basicsize = PyObject_GetAttrString(result, "__basicsize__");
-    if (!py_basicsize)
-        goto bad;
-    basicsize = PyLong_AsSsize_t(py_basicsize);
-    Py_DECREF(py_basicsize);
-    py_basicsize = 0;
-    if (basicsize == (Py_ssize_t)-1 && PyErr_Occurred())
-        goto bad;
-#endif
-    if (!strict && (size_t)basicsize > size) {
-        PyOS_snprintf(warning, sizeof(warning),
-            "%s.%s size changed, may indicate binary incompatibility. Expected %zd, got %zd",
-            module_name, class_name, basicsize, size);
-        if (PyErr_WarnEx(NULL, warning, 0) < 0) goto bad;
-    }
-    else if ((size_t)basicsize != size) {
-        PyErr_Format(PyExc_ValueError,
-            "%.200s.%.200s has the wrong size, try recompiling. Expected %zd, got %zd",
-            module_name, class_name, basicsize, size);
-        goto bad;
-    }
-    return (PyTypeObject *)result;
-bad:
-    Py_XDECREF(py_module);
-    Py_XDECREF(result);
-    return NULL;
 }
 #endif
 
