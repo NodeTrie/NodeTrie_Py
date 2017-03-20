@@ -22,7 +22,7 @@ from libc.stdlib cimport malloc, free
 from cpython.version cimport PY_MAJOR_VERSION
 cimport cnode
 
-cdef str ENCODING='utf-8'
+ENCODING='utf-8'
 
 cdef bytes _encode_bytes(_str):
     if isinstance(_str, bytes):
