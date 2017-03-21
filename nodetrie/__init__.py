@@ -1,1 +1,1 @@
-from .nodetrie import Node
+from .nodetrie import Node, ENCODING

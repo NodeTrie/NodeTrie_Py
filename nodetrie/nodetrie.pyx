@@ -133,6 +133,9 @@ cdef class Node:
             if self._node is not NULL and self._node.name is not NULL:
                 return self._node.name.decode(ENCODING)
 
+    def __repr__(self):
+        return "Node: '{name}'".format(name=self.name)
+
     def is_leaf(self):
         """Check if node is a leaf
 
@@ -166,7 +169,6 @@ cdef class Node:
     cdef void _insert_split_path(self, unsigned char **paths) nogil:
         if self._node == NULL:
             self._node = cnode.init_node()
-        _node = self._node
         cnode.insert_paths(self._node, paths)
         free(paths)
 
