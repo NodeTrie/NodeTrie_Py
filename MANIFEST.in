@@ -2,4 +2,4 @@ include versioneer.py
 include nodetrie/_version.py
 include *.c
 include *.h
-include node.h
+include nodetrie_c/src/node.h
