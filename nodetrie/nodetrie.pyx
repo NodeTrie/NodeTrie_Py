@@ -19,38 +19,45 @@
 import fnmatch
 
 from libc.stdlib cimport malloc, free
-from cpython.version cimport PY_MAJOR_VERSION
 cimport cnode
 
+
 ENCODING='utf-8'
+
 
 cdef bytes _encode_bytes(_str):
     if isinstance(_str, bytes):
         return _str
-    elif PY_MAJOR_VERSION < 3 and isinstance(_str, unicode):
+    elif isinstance(_str, unicode):
         return _str.encode(ENCODING)
-    elif PY_MAJOR_VERSION >= 3 and isinstance(_str, str):
-        return bytes(_str, ENCODING)
-    return bytes(_str)
+    return _str
 
-cdef unsigned char ** to_cstring_array(list list_str):
-    cdef unsigned char **ret = <unsigned char **>malloc(
-        (len(list_str)+1) * sizeof(unsigned char *))
-    if not ret:
-        raise MemoryError()
+
+cdef const char ** to_cstring_array(list list_str):
+    cdef const char **ret
     cdef bytes _str
     cdef Py_ssize_t i
-    for i in range(len(list_str)):
+    cdef size_t l_size = len(list_str)+1
+    with nogil:
+        ret = <char **>malloc(
+            (l_size) * sizeof(char *))
+        if not ret:
+            with gil:
+                raise MemoryError()
+    for i in range(l_size-1):
         list_str[i] = _encode_bytes(list_str[i])
-        ret[i] = <unsigned char *>list_str[i]
-    ret[i+1] = NULL
-    return ret
+        ret[i] = <char *>list_str[i]
+    with nogil:
+        ret[i+1] = NULL
+        return ret
+
 
 cdef object PyNode_Init(cnode.Node *node):
     """Python Node object factory class for cnode.Node*"""
     cdef Node _node = Node()
     _node._node = node
     return _node
+
 
 # Graphite-API functions ported to cython from graphite-api project
 # http://graphite-api.readthedocs.org/
@@ -61,9 +68,10 @@ def _deduplicate(list entries):
             yielded.add(entry)
             yield entry
 
+
 # Graphite-API functions ported to cython from graphite-api project
 # http://graphite-api.readthedocs.org/
-cdef match_entries(node, pattern):
+cdef match_entries(Node node, pattern):
     """A drop-in replacement for fnmatch.filter that supports pattern
     variants (ie. {foo,bar}baz = foobaz or barbaz).
 
@@ -103,35 +111,35 @@ cdef class Node:
         if self._node is not NULL and self._node.name is NULL:
             cnode.clear(self._node)
 
-    property children:
+    @property
+    def children(self):
         """Get node children list
 
         :rtype: list(:py:class:`Node`)"""
-        def __get__(self):
-            if self._node is NULL:
-                return []
-            if self._node.children_i == 0:
-                return []
-            cdef unsigned int i
-            return [PyNode_Init(&self._node.children[i])
-                    for i in range(self._node.children_i)]
+        if self._node is NULL:
+            return []
+        if self._node.children_i == 0:
+            return []
+        cdef unsigned int i
+        return [PyNode_Init(&self._node.children[i])
+                for i in range(self._node.children_i)]
 
-    property children_size:
+    @property
+    def children_size(self):
         """Get children list size
 
         :rtype: int"""
-        def __get__(self):
-            if self._node is not NULL:
-                return self._node.children_i
+        if self._node is not NULL:
+            return self._node.children_i
 
-    property name:
+    @property
+    def name(self):
         """Get node name
 
         :rtype: unicode
         """
-        def __get__(self):
-            if self._node is not NULL and self._node.name is not NULL:
-                return self._node.name.decode(ENCODING)
+        if self._node is not NULL and self._node.name is not NULL:
+            return self._node.name.decode(ENCODING)
 
     def __repr__(self):
         return "Node: '{name}'".format(name=self.name)
@@ -141,10 +149,10 @@ cdef class Node:
 
         :rtype: bool
         """
-        return self._is_leaf(self._node)
-
-    cdef bint _is_leaf(self, cnode.Node *node) nogil:
-        return cnode.is_leaf(node)
+        cdef bint rc
+        with nogil:
+            rc = cnode.is_leaf(self._node)
+        return rc
 
     def insert(self, path, str separator='.'):
         """Insert tree path string as nodes separated by separator
@@ -154,7 +162,7 @@ cdef class Node:
         cdef list paths = path.split(separator)
         return self.insert_split_path(paths)
 
-    cdef cnode.Node* _insert(self, unsigned char *name) nogil:
+    cdef cnode.Node* _insert(self, const char *name) nogil:
         return cnode.insert(self._node, name)
 
     cpdef void insert_split_path(self, list paths):
@@ -163,10 +171,11 @@ cdef class Node:
         :param paths: List of paths to insert"""
         if len(paths) == 0:
             return
-        cdef unsigned char **c_paths = to_cstring_array(paths)
-        self._insert_split_path(c_paths)
+        cdef const char **c_paths = to_cstring_array(paths)
+        with nogil:
+            self._insert_split_path(c_paths)
 
-    cdef void _insert_split_path(self, unsigned char **paths) nogil:
+    cdef void _insert_split_path(self, const char **paths) nogil:
         if self._node == NULL:
             self._node = cnode.init_node()
         cnode.insert_paths(self._node, paths)
@@ -205,9 +214,9 @@ cdef class Node:
                 yield (child_path, child_node)
 
     cpdef is_pattern(self, pattern):
+        cdef bint rc
         byte_str = _encode_bytes(pattern)
         cdef char* c_pattern = byte_str
-        return self._is_pattern(c_pattern)
-
-    cdef bint _is_pattern(self, char *pattern) nogil:
-        return cnode.is_pattern(pattern)
+        with nogil:
+            rc = cnode.is_pattern(c_pattern)
+        return rc
