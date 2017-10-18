@@ -16,6 +16,8 @@
 
 cimport cnode
 
+cdef const char ** to_cstring_array(list)
+
 cdef object PyNode_Init(cnode.Node *node)
 
 cdef class Node:
