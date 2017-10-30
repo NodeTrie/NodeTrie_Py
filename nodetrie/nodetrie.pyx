@@ -172,14 +172,16 @@ cdef class Node:
         if len(paths) == 0:
             return
         cdef const char **c_paths = to_cstring_array(paths)
-        with nogil:
-            self._insert_split_path(c_paths)
+        try:
+            with nogil:
+                self._insert_split_path(c_paths)
+        finally:
+            free(c_paths)
 
     cdef void _insert_split_path(self, const char **paths) nogil:
         if self._node == NULL:
             self._node = cnode.init_node()
         cnode.insert_paths(self._node, paths)
-        free(paths)
 
     def query(self, query, separator='.'):
         """Return nodes matching Graphite glob pattern query"""
